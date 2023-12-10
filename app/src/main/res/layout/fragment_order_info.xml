@@ -1,0 +1,938 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <com.dotjoo.aghslilnidelivery.base.OnlyVerticalSwipeRefreshLayout
+        android:id="@+id/swiperefresh_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        >
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+             android:paddingBottom="@dimen/_11sdp"
+            tools:context=".ui.fragment.order.OrderFragment">
+
+            <RelativeLayout
+                android:id="@+id/lyt_header_blue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/blue"
+                android:minHeight="@dimen/_120sdp"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/v1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_7sdp"
+                android:background="@color/light_grey"
+                app:layout_constraintTop_toBottomOf="@id/lyt_header_blue" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/et_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_23sdp"
+                android:layout_marginTop="@dimen/_35sdp"
+                android:background="@drawable/bg_light_blue"
+                android:minHeight="@dimen/_50sdp"
+                android:paddingHorizontal="@dimen/_10sdp"
+                 app:layout_constraintEnd_toEndOf="@id/et_search"
+                app:layout_constraintStart_toStartOf="@id/et_search"
+                app:layout_constraintTop_toTopOf="@id/lyt_header_blue">
+
+
+                <androidx.cardview.widget.CardView
+
+                    android:id="@+id/card_back"
+                    android:layout_width="@dimen/_33sdp"
+                    android:layout_height="@dimen/_33sdp"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginVertical="@dimen/_4sdp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardCornerRadius="@dimen/_40sdp"
+                    app:layout_constraintBottom_toBottomOf="@id/tv1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_status">
+
+                    <ImageView
+                        android:id="@+id/iv_back"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_gravity="center"
+                        android:background="?attr/selectableItemBackground"
+                        android:padding="@dimen/_5sdp"
+                        android:rotation="180"
+                        android:src="@drawable/iv_back" />
+
+                </androidx.cardview.widget.CardView>
+
+
+                <TextView
+                    android:id="@+id/tv_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="@dimen/_10sdp"
+                  android:layout_marginStart="@dimen/_10sdp"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/_13sdp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/card_back"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginVertical="@dimen/_3sdp"
+          android:visibility="gone"          android:layout_toEndOf="@id/card_back"
+                    android:text="@string/order_status"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/_10sdp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/tv_status"
+                    app:layout_constraintTop_toBottomOf="@id/tv_status" />
+
+
+                <ImageView
+                    android:id="@+id/iv_status"
+                    android:layout_width="@dimen/_42sdp"
+                    android:layout_height="@dimen/_42sdp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:padding="@dimen/_7sdp"
+                     app:layout_constraintBottom_toBottomOf="@id/card_back"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/card_back" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:fillViewport="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/v1"
+
+                >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/lyt_data"
+            android:visibility="gone"        android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <TextView
+                        android:id="@+id/tv_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:text="@string/pickup_informaion"
+                        android:textColor="@color/grey_dark"
+                        android:textSize="@dimen/_16sdp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.cardview.widget.CardView
+
+                        android:id="@+id/card_pickup_laundry"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:backgroundTint="@color/light_grey"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="@dimen/_12sdp"
+                        app:cardElevation="0dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_1">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="@dimen/_42sdp"
+                            android:paddingHorizontal="@dimen/_10sdp"
+                            android:paddingVertical="@dimen/_14sdp">
+
+                            <androidx.cardview.widget.CardView
+
+                                android:id="@+id/card_logo_laundry_pickup"
+                                android:layout_width="@dimen/_35sdp"
+                                android:layout_height="@dimen/_35sdp"
+                                android:backgroundTint="@color/white"
+                                android:clickable="true"
+                                app:cardCornerRadius="@dimen/_40sdp"
+                                app:layout_constraintBottom_toBottomOf="@id/tv_laundry_loc_pickup"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/tv_laundry_name_pickup">
+
+
+                                <ImageView
+                                    android:id="@+id/iv_logo_pickup"
+                                    android:layout_width="@dimen/_30sdp"
+                                    android:layout_height="@dimen/_30sdp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/logo"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/tv_client_name" />
+
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+
+                                android:id="@+id/card_call_laundry_pickup"
+                                android:layout_width="@dimen/_30sdp"
+                                android:layout_height="@dimen/_30sdp"
+                                android:backgroundTint="@color/white"
+                                android:clickable="true"
+                                app:cardCornerRadius="@dimen/_40sdp"
+                                app:layout_constraintBottom_toBottomOf="@id/card_logo_laundry_pickup"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/card_logo_laundry_pickup">
+
+
+                                <ImageView
+                                    android:layout_width="@dimen/_20sdp"
+                                    android:layout_height="@dimen/_20sdp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/ic_call"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/tv_client_name" />
+
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+
+                                android:id="@+id/card_location_pickup_laundry"
+                                android:layout_width="@dimen/_30sdp"
+                                android:layout_height="@dimen/_30sdp"
+                                android:layout_marginEnd="@dimen/_5sdp"
+                                android:backgroundTint="@color/white"
+                                android:clickable="true"
+                                app:cardCornerRadius="@dimen/_40sdp"
+                                app:layout_constraintBottom_toBottomOf="@id/card_logo_laundry_pickup"
+                                app:layout_constraintEnd_toStartOf="@id/card_call_laundry_pickup"
+                                app:layout_constraintTop_toTopOf="@id/card_logo_laundry_pickup">
+
+
+                                <ImageView
+                                    android:layout_width="@dimen/_15sdp"
+                                    android:layout_height="@dimen/_15sdp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/ic_location"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/tv_client_name" />
+
+                            </androidx.cardview.widget.CardView>
+
+                            <ImageView
+                                android:id="@+id/iv_onpickup"
+                                android:layout_width="@dimen/_10sdp"
+                                android:layout_height="@dimen/_10sdp"
+                                android:layout_marginStart="@dimen/_3sdp"
+                                android:layout_marginTop="@dimen/_2sdp"
+                                app:layout_constraintBottom_toBottomOf="@+id/tv_laundry_name_pickup"
+                                app:layout_constraintStart_toEndOf="@id/tv_laundry_name_pickup"
+
+                                app:layout_constraintTop_toTopOf="@id/tv_laundry_name_pickup" />
+
+                            <TextView
+
+                                android:id="@+id/tv_ratepickup"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:drawableStart="@drawable/ic_star_sel"                                android:drawablePadding="@dimen/_2sdp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@id/tv_laundry_name_pickup"
+                                app:layout_constraintEnd_toStartOf="@id/card_location_pickup_laundry"
+                                app:layout_constraintStart_toEndOf="@+id/iv_onpickup"
+                                app:layout_constraintTop_toTopOf="@+id/tv_laundry_name_pickup" />
+
+                            <TextView
+                                android:id="@+id/tv_laundry_name_pickup"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_4sdp"
+                                android:text="كلين هاوس"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_14sdp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toEndOf="@+id/card_logo_laundry_pickup"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+
+                            <TextView
+                                android:id="@+id/tv_laundry_loc_pickup"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/_5sdp"
+                                android:drawableStart="@drawable/ic_location"
+                                android:drawablePadding="@dimen/_4sdp"
+                                android:drawableTint="@color/grey"
+                                android:text="الرياض"
+                                android:textColor="@color/grey"
+                                android:textSize="@dimen/_11sdp"
+                                app:layout_constraintEnd_toStartOf="@id/card_location_pickup_laundry"
+                                app:layout_constraintStart_toStartOf="@id/tv_laundry_name_pickup"
+                                app:layout_constraintTop_toBottomOf="@id/tv_laundry_name_pickup" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+
+                        android:id="@+id/card_pickup_client"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                         android:backgroundTint="@color/light_grey"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="@dimen/_12sdp"
+                        app:cardElevation="0dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/card_pickup_laundry">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="@dimen/_42sdp"
+                            android:paddingHorizontal="@dimen/_10sdp"
+                            android:paddingVertical="@dimen/_10sdp">
+
+                            <TextView
+                                android:id="@+id/tv_0"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_7sdp"
+                                android:text="@string/client_name"
+                                android:textColor="@color/grey"
+                                android:textSize="@dimen/_11sdp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_client_name"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:text=" "
+                                android:textColor="@color/grey_dark"
+                                android:textSize="@dimen/_14sdp"
+                                android:textStyle="bold"
+                                app:layout_constraintEnd_toStartOf="@id/card_loc_client_pickup"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/tv_0" />
+
+                            <androidx.cardview.widget.CardView
+
+                                android:id="@+id/card_Call_pickup"
+                                android:layout_width="@dimen/_30sdp"
+                                android:layout_height="@dimen/_30sdp"
+                                android:backgroundTint="@color/white"
+                                android:clickable="true"
+                                app:cardCornerRadius="@dimen/_40sdp"
+                                app:layout_constraintBottom_toBottomOf="@id/tv_client_name"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/tv_0">
+
+
+                                <ImageView
+                                    android:layout_width="@dimen/_20sdp"
+                                    android:layout_height="@dimen/_20sdp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/ic_call"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/tv_client_name" />
+
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+
+                                android:id="@+id/card_loc_client_pickup"
+                                android:layout_width="@dimen/_30sdp"
+                                android:layout_height="@dimen/_30sdp"
+                                android:layout_marginEnd="@dimen/_5sdp"
+                                android:backgroundTint="@color/white"
+                                android:clickable="true"
+                                app:cardCornerRadius="@dimen/_40sdp"
+                                app:layout_constraintBottom_toBottomOf="@id/tv_client_name"
+                                app:layout_constraintEnd_toStartOf="@id/card_Call_pickup"
+                                app:layout_constraintTop_toTopOf="@id/tv_0">
+
+
+                                <ImageView
+                                    android:id="@+id/iv_loc"
+                                    android:layout_width="@dimen/_15sdp"
+                                    android:layout_height="@dimen/_15sdp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/ic_location"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/tv_client_name" />
+
+                            </androidx.cardview.widget.CardView>
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <View
+                        android:id="@+id/v0"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_4sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:background="@color/light_grey"
+                        app:layout_constraintTop_toBottomOf="@+id/card_pickup_client" />
+
+                    <TextView
+                        android:id="@+id/tv11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_18sdp"
+                        android:text="@string/dropof_informaion"
+                        android:textColor="@color/grey_dark"
+                        android:textSize="@dimen/_16sdp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/v0" />
+
+                    <androidx.cardview.widget.CardView
+
+                        android:id="@+id/card_dropoff_laundry"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                         android:backgroundTint="@color/light_grey"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="@dimen/_12sdp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        app:cardElevation="0dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv11">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="@dimen/_47sdp"
+                            android:paddingHorizontal="@dimen/_10sdp"
+                            android:paddingVertical="@dimen/_13sdp">
+
+                            <androidx.cardview.widget.CardView
+
+                                android:id="@+id/card_logo_laundry_dropoff"
+                                android:layout_width="@dimen/_35sdp"
+                                android:layout_height="@dimen/_35sdp"
+                                android:backgroundTint="@color/white"
+                                android:clickable="true"
+                                app:cardCornerRadius="@dimen/_40sdp"
+                                app:layout_constraintBottom_toBottomOf="@id/tv_laundry_loc_dropof"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/tv_laundry_name_dropof">
+
+
+                                <ImageView
+                                    android:id="@+id/iv_logo_dropof"
+                                    android:layout_width="@dimen/_30sdp"
+                                    android:layout_height="@dimen/_30sdp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/logo"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/tv_client_name" />
+
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+
+                                android:id="@+id/card_call_laundry_dropoff"
+                                android:layout_width="@dimen/_30sdp"
+                                android:layout_height="@dimen/_30sdp"
+                                android:backgroundTint="@color/white"
+                                android:clickable="true"
+                                app:cardCornerRadius="@dimen/_40sdp"
+                                app:layout_constraintBottom_toBottomOf="@id/card_logo_laundry_dropoff"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/card_logo_laundry_dropoff">
+
+
+                                <ImageView
+                                    android:layout_width="@dimen/_20sdp"
+                                    android:layout_height="@dimen/_20sdp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/ic_call"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/tv_client_name" />
+
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+
+                                android:id="@+id/card_location_dropoff_laundry"
+                                android:layout_width="@dimen/_30sdp"
+                                android:layout_height="@dimen/_30sdp"
+                                android:layout_marginEnd="@dimen/_5sdp"
+                                android:backgroundTint="@color/white"
+                                android:clickable="true"
+                                app:cardCornerRadius="@dimen/_40sdp"
+                                app:layout_constraintBottom_toBottomOf="@id/card_logo_laundry_dropoff"
+                                app:layout_constraintEnd_toStartOf="@id/card_call_laundry_dropoff"
+                                app:layout_constraintTop_toTopOf="@id/card_logo_laundry_dropoff">
+
+
+                                <ImageView
+                                    android:layout_width="@dimen/_15sdp"
+                                    android:layout_height="@dimen/_15sdp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/ic_location"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/tv_client_name" />
+
+                            </androidx.cardview.widget.CardView>
+
+                            <ImageView
+                                android:id="@+id/iv_on"
+                                android:layout_width="@dimen/_10sdp"
+                                android:layout_height="@dimen/_10sdp"
+                                android:layout_marginStart="@dimen/_3sdp"
+                                android:layout_marginTop="@dimen/_2sdp"
+                                app:layout_constraintBottom_toBottomOf="@+id/tv_laundry_name_dropof"
+                                app:layout_constraintStart_toEndOf="@id/tv_laundry_name_dropof"
+
+                                app:layout_constraintTop_toTopOf="@id/tv_laundry_name_dropof" />
+
+                            <TextView
+
+                                android:id="@+id/tv_rate"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:layout_marginEnd="@dimen/_10sdp"
+              android:text="5"                  android:drawableStart="@drawable/ic_star_sel"
+                                android:drawablePadding="@dimen/_2sdp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@id/tv_laundry_name_dropof"
+                                app:layout_constraintEnd_toStartOf="@id/card_location_dropoff_laundry"
+                                app:layout_constraintStart_toEndOf="@+id/iv_on"
+                                app:layout_constraintTop_toTopOf="@+id/tv_laundry_name_dropof" />
+
+                            <TextView
+                                android:id="@+id/tv_laundry_name_dropof"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_4sdp"
+                                android:text="كلين هاوس"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_14sdp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toEndOf="@+id/card_logo_laundry_dropoff"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+
+                            <TextView
+                                android:id="@+id/tv_laundry_loc_dropof"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/_5sdp"
+                                android:drawableStart="@drawable/ic_location"
+                                android:drawablePadding="@dimen/_4sdp"
+                                android:drawableTint="@color/grey"
+                                android:text="الرياض"
+                                android:textColor="@color/grey"
+                                android:textSize="@dimen/_11sdp"
+                                app:layout_constraintEnd_toStartOf="@id/card_location_dropoff_laundry"
+                                app:layout_constraintStart_toStartOf="@id/tv_laundry_name_dropof"
+                                app:layout_constraintTop_toBottomOf="@id/tv_laundry_name_dropof" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+
+                        android:id="@+id/card_dropoff_client"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:backgroundTint="@color/light_grey"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="@dimen/_12sdp"
+                        app:cardElevation="0dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/card_dropoff_laundry">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="@dimen/_42sdp"
+                            android:paddingHorizontal="@dimen/_10sdp"
+                            android:paddingVertical="@dimen/_10sdp">
+
+                            <TextView
+                                android:id="@+id/tv_01"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_7sdp"
+                                android:text="@string/client_name"
+                                android:textColor="@color/grey"
+                                android:textSize="@dimen/_11sdp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_client_namedropoff"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:text=" "
+                                android:textColor="@color/grey_dark"
+                                android:textSize="@dimen/_14sdp"
+                                android:textStyle="bold"
+                                app:layout_constraintEnd_toStartOf="@id/card_location_client_dropoff"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/tv_01" />
+
+                            <androidx.cardview.widget.CardView
+
+                                android:id="@+id/card_Call_client_dropoff"
+                                android:layout_width="@dimen/_30sdp"
+                                android:layout_height="@dimen/_30sdp"
+                                android:backgroundTint="@color/white"
+                                android:clickable="true"
+                                app:cardCornerRadius="@dimen/_40sdp"
+                                app:layout_constraintBottom_toBottomOf="@id/tv_client_namedropoff"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/tv_01">
+
+
+                                <ImageView
+                                    android:layout_width="@dimen/_20sdp"
+                                    android:layout_height="@dimen/_20sdp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/ic_call"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/tv_client_namedropoff" />
+
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+
+                                android:id="@+id/card_location_client_dropoff"
+                                android:layout_width="@dimen/_30sdp"
+                                android:layout_height="@dimen/_30sdp"
+                                android:layout_marginEnd="@dimen/_5sdp"
+                                android:backgroundTint="@color/white"
+                                android:clickable="true"
+                                app:cardCornerRadius="@dimen/_40sdp"
+                                app:layout_constraintBottom_toBottomOf="@id/tv_client_namedropoff"
+                                app:layout_constraintEnd_toStartOf="@id/card_Call_client_dropoff"
+                                app:layout_constraintTop_toTopOf="@id/tv_01">
+
+
+                                <ImageView
+                                    android:layout_width="@dimen/_15sdp"
+                                    android:layout_height="@dimen/_15sdp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/ic_location"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/tv_client_name" />
+
+                            </androidx.cardview.widget.CardView>
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+
+                    <View
+                        android:id="@+id/v2"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_4sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:background="@color/light_grey"
+                        app:layout_constraintTop_toBottomOf="@+id/card_dropoff_client" />
+
+                    <TextView
+                        android:id="@+id/tv2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:text="@string/choosen_items"
+                        android:textColor="@color/grey_dark"
+                        android:textSize="@dimen/_15sdp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/v2" />
+
+                    <androidx.cardview.widget.CardView
+
+                        android:id="@+id/card_urgent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:backgroundTint="@color/light_grey"
+                        android:clickable="true"
+                        app:cardCornerRadius="@dimen/_40sdp"
+                        app:layout_constraintBottom_toBottomOf="@id/tv2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tv2">
+
+                        <TextView
+                            android:id="@+id/tv_urgent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:paddingHorizontal="@dimen/_15sdp"
+                            android:paddingVertical="@dimen/_3sdp"
+
+                            android:text="@string/urgent"
+                            android:textColor="@color/blue"
+                            android:textSize="@dimen/_12sdp"
+                            android:textStyle="bold" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_orders"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:orientation="vertical"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv2"
+                        tools:itemCount="1"
+                        tools:listitem="@layout/item_order_info" />
+
+                    <View
+                        android:id="@+id/v3"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_4sdp"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:background="@color/light_grey"
+                        app:layout_constraintTop_toBottomOf="@+id/rv_orders" />
+
+                    <TextView
+                        android:id="@+id/tv3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:text="@string/payment_option"
+                        android:textColor="@color/grey_dark"
+                        android:textSize="@dimen/_15sdp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/v3" />
+
+                    <TextView
+                        android:id="@+id/tv_payment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_7sdp"
+                        android:drawableStart="@drawable/ic_pay_visa"
+                        android:drawablePadding="@dimen/_6sdp"
+                        android:text="الكتروني"
+                        android:textColor="@color/grey_dark"
+                        android:textSize="@dimen/_11sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv3" />
+
+                    <View
+                        android:id="@+id/view2"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_15sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@color/light_grey"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_payment" />
+
+
+                    <TextView
+                        android:id="@+id/tv_subtotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_12sdp"
+                        android:text="@string/sub_total"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_12sdp"
+                        app:layout_constraintStart_toStartOf="@id/rv_orders"
+                        app:layout_constraintTop_toBottomOf="@id/view2" />
+
+                    <TextView
+                        android:id="@+id/tv_sub_total_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:textColor="@color/grey_dark"
+                        android:textSize="@dimen/_10sdp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_subtotal"
+                        app:layout_constraintEnd_toEndOf="@id/rv_orders"
+                        app:layout_constraintTop_toTopOf="@+id/tv_subtotal" />
+
+                    <TextView
+                        android:id="@+id/tv_delivery_fees"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:text="@string/delivery_fees"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_12sdp"
+                        app:layout_constraintStart_toStartOf="@id/rv_orders"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_subtotal" />
+
+                    <TextView
+                        android:id="@+id/tv_delivery_fees_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:textColor="@color/grey_dark"
+                        android:textSize="@dimen/_10sdp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_delivery_fees"
+                        app:layout_constraintEnd_toEndOf="@id/rv_orders"
+                        app:layout_constraintTop_toTopOf="@+id/tv_delivery_fees" />
+
+                    <TextView
+                        android:id="@+id/tv_tax"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:text="@string/tax_Service"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_12sdp"
+                        app:layout_constraintStart_toStartOf="@id/rv_orders"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_delivery_fees" />
+
+
+                    <TextView
+                        android:id="@+id/tv_tax_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:textColor="@color/grey_dark"
+                        android:textSize="@dimen/_10sdp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_tax"
+                        app:layout_constraintEnd_toEndOf="@id/rv_orders"
+                        app:layout_constraintTop_toTopOf="@+id/tv_tax" />
+
+
+                    <View
+                        android:id="@+id/view"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_tax_value" />
+
+                    <TextView
+                        android:id="@+id/tv_total"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:text="@string/total"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@id/rv_orders"
+                        app:layout_constraintTop_toBottomOf="@+id/view" />
+
+
+                    <TextView
+                        android:id="@+id/tv_total_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/_13sdp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_total"
+                        app:layout_constraintEnd_toEndOf="@id/rv_orders"
+                        app:layout_constraintTop_toTopOf="@+id/tv_total" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/lyt_new_order"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        app:layout_constraintTop_toBottomOf="@id/tv_total">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_agree_new_order"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_50sdp"
+                            android:layout_marginHorizontal="@dimen/_15sdp"
+                            android:layout_marginTop="@dimen/_20sdp"
+                            android:backgroundTint="@color/blue"
+                            android:text="@string/agree"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_12sdp"
+                            android:textStyle="bold"
+                            app:cornerRadius="@dimen/_21sdp"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_decline_new_order"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_50sdp"
+                            android:layout_marginHorizontal="@dimen/_15sdp"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:backgroundTint="@color/light_grey"
+                            android:text="@string/decline"
+                    android:visibility="gone"        android:textColor="@color/black"
+                            android:textSize="@dimen/_12sdp"
+                            android:textStyle="bold"
+                            app:cornerRadius="@dimen/_21sdp"
+                            app:layout_constraintTop_toBottomOf="@id/btn_agree_new_order"
+                            app:strokeColor="@color/light_grey"
+                            app:strokeWidth="@dimen/_1sdp" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                     <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_marginHorizontal="@dimen/_15sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:backgroundTint="@color/black"
+                         android:textColor="@color/white"
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold"
+                        android:visibility="gone"
+                        app:cornerRadius="@dimen/_21sdp"
+                        app:layout_constraintTop_toBottomOf="@id/tv_total" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.core.widget.NestedScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.dotjoo.aghslilnidelivery.base.OnlyVerticalSwipeRefreshLayout>
+</layout>

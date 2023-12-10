@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_rounded_top"
+        android:gravity="center"
+        android:paddingBottom="@dimen/_10sdp">
+
+
+        <TextView
+            android:id="@+id/txt2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_35sdp"
+            android:gravity="center"
+            android:text="@string/change_password"
+            android:textColor="@color/grey_dark"
+            android:textSize="@dimen/_17sdp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/tv_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:gravity="center_vertical"
+            android:minHeight="@dimen/_35sdp"
+            android:text="@string/password"
+            android:textColor="@color/grey_dark"
+            android:textSize="@dimen/_12sdp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt2" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_marginTop="@dimen/_10sdp"
+            android:id="@+id/lyt_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint=""
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_11sdp"
+            app:endIconDrawable="@drawable/ic_eye"        app:endIconTint="@color/grey_400"
+            app:endIconMode="password_toggle"
+            app:hintAnimationEnabled="false"
+            app:hintEnabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@+id/tv_2">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/_40sdp"    android:autofillHints="password"
+                android:background="@drawable/bg_light_blue"
+                android:hint="@string/password"
+                android:paddingVertical="@dimen/_5sdp"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:textSize="@dimen/_11sdp"      android:inputType="textPassword"
+
+                android:textAlignment="viewStart" />     </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:id="@+id/tv_3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:gravity="center_vertical"
+            android:minHeight="@dimen/_35sdp"
+            android:text="@string/new_password"
+            android:textColor="@color/grey_dark"
+            android:textSize="@dimen/_12sdp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lyt_pass" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_marginTop="@dimen/_10sdp"
+            android:id="@+id/lyt_new_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint=""
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_11sdp"
+            app:endIconDrawable="@drawable/ic_eye"        app:endIconTint="@color/grey_400"
+            app:endIconMode="password_toggle"
+            app:hintAnimationEnabled="false"
+            app:hintEnabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@+id/tv_3">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_newpassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/_40sdp"    android:autofillHints="password"
+                android:background="@drawable/bg_light_blue"
+                android:hint="@string/new_password"
+                android:paddingVertical="@dimen/_5sdp"
+                android:paddingHorizontal="@dimen/_10sdp"
+                 android:textSize="@dimen/_11sdp"      android:inputType="textPassword"
+
+                android:textAlignment="viewStart" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:id="@+id/tv_4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:gravity="center_vertical"
+            android:minHeight="@dimen/_35sdp"
+            android:text="@string/confirm_new_password"
+            android:textColor="@color/grey_dark"
+            android:textSize="@dimen/_12sdp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lyt_new_pass" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_marginTop="@dimen/_10sdp"
+            android:id="@+id/lyt_comfirm_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint=""
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_11sdp"
+            app:endIconDrawable="@drawable/ic_eye"        app:endIconTint="@color/grey_400"
+            app:endIconMode="password_toggle"
+            app:hintAnimationEnabled="false"
+            app:hintEnabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@+id/tv_4">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_password_confim"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/_40sdp"    android:autofillHints="password"
+                android:background="@drawable/bg_light_blue"
+                android:hint="@string/confirm_new_password"
+                android:paddingVertical="@dimen/_5sdp"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:inputType="textPassword"
+android:textSize="@dimen/_11sdp"
+                android:textAlignment="viewStart" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_signup"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:backgroundTint="@color/blue"
+            android:text="@string/change_password"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12sdp"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/_21sdp"
+            app:layout_constraintTop_toBottomOf="@id/lyt_comfirm_pass" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

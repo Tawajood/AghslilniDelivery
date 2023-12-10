@@ -1,0 +1,59 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.AghslilniDelivery" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorPrimaryVariant">@color/blue</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="android:windowDisablePreview">true</item>
+
+
+        <!-- Status bar color. -->
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+
+        <item name="android:windowTranslucentStatus">true</item>
+        <!-- Customize your theme here. -->
+
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:fitsSystemWindows">false</item>
+
+
+    </style>
+    <style name="Theme.AghslilniDelivery" parent="Base.Theme.AghslilniDelivery" />
+    <style name="CustomBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/CustomBottomSheetStyle</item>
+        <item name="android:windowFullscreen">false</item>
+
+    </style>
+
+    <style name="CustomBottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="DialogFragmentTheme" parent="Theme.AghslilniDelivery">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowIsFloating">false</item>
+    </style>
+    <style name="RoundedCornersDialog" parent="@style/Theme.MaterialComponents.Dialog">
+        <item name="dialogCornerRadius">16dp</item>
+    </style>
+    <!--  <style name="foodRatingBar" parent="@android:style/Widget.RatingBar">
+          <item name="android:progressDrawable">@drawable/rating_bar_full</item>
+          <item name="android:minHeight">18dp</item>
+          <item name="android:minWidth">@dimen/_140sdp</item>
+
+          <item name="android:numStars">5</item>
+
+          <item name="android:maxHeight">@dimen/_40sdp</item>
+      </style>-->
+    <style name="Widget.App.CheckBox" parent="Widget.MaterialComponents.CompoundButton.CheckBox">
+        <item name="buttonTint">@color/transparent</item>
+        <item name="colorAccent">#fff</item>
+
+
+    </style>
+
+</resources>

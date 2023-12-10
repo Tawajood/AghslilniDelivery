@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container_frame"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:strokeColor="@color/light_grey"
+        android:backgroundTint="@color/white"
+        app:strokeWidth="@dimen/_1sdp"
+        app:cardCornerRadius="@dimen/_20sdp"
+        android:layout_margin="@dimen/_6sdp">
+
+        <TextView
+            android:id="@+id/msg_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="مرحبًا بك، ماذا تريد؟"
+            android:textSize="@dimen/_12sdp"
+            android:maxWidth="@dimen/_220sdp"
+            android:paddingVertical="@dimen/_8sdp"
+            android:paddingHorizontal="@dimen/_16sdp"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

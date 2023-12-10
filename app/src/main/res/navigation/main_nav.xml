@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav.xml"
+    app:startDestination="@id/orderFragment">
+
+    <fragment
+        android:id="@+id/orderFragment"
+        android:name="com.dotjoo.aghslilnidelivery.ui.fragment.main.order.OrderFragment"
+        android:label="fragment_order"
+        tools:layout="@layout/fragment_order" />
+    <fragment
+        android:id="@+id/moreFragment"
+        android:name="com.dotjoo.aghslilnidelivery.ui.fragment.main.more.MoreFragment"
+        android:label="fragment_more"
+        tools:layout="@layout/fragment_more" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.dotjoo.aghslilnidelivery.ui.fragment.main.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <dialog
+        android:id="@+id/changeDelteAccountSheetFragment"
+        android:name="com.dotjoo.aghslilnidelivery.ui.dialog.ChangeDelteAccountSheetFragment"
+        android:label="ChangeDelteAccountSheetFragment" />
+    <dialog
+        android:id="@+id/loginFirstBotomSheetFragment"
+        android:name="com.dotjoo.aghslilnidelivery.ui.dialog.LoginFirstBotomSheetFragment"
+        android:label="LoginFirstBotomSheetFragment" />
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.dotjoo.aghslilnidelivery.ui.fragment.main.profile.EditProfileFragment"
+        android:label="EditProfileFragment" />
+    <fragment
+        android:id="@+id/itFragment"
+        android:name="com.dotjoo.aghslilnidelivery.ui.fragment.main.moreFragments.ItFragment"
+        android:label="fragment_it"
+        tools:layout="@layout/fragment_it" />
+    <fragment
+        android:id="@+id/walletFragment"
+        android:name="com.dotjoo.aghslilnidelivery.ui.fragment.main.moreFragments.WalletFragment"
+        android:label="WalletFragment" />
+    <fragment
+        android:id="@+id/notifactionFragment"
+        android:name="com.dotjoo.aghslilnidelivery.ui.fragment.main.moreFragments.NotifactionFragment"
+        android:label="fragment_notifaction"
+        tools:layout="@layout/fragment_notifaction" />
+    <fragment
+        android:id="@+id/contactUsFragment"
+        android:name="com.dotjoo.aghslilnidelivery.ui.fragment.main.moreFragments.ContactUsFragment"
+        android:label="ContactUsFragment" />
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.dotjoo.aghslilnidelivery.ui.fragment.main.moreFragments.AboutFragment"
+        android:label="AboutFragment" />
+    <fragment
+        android:id="@+id/termsFragment"
+        android:name="com.dotjoo.aghslilnidelivery.ui.fragment.main.moreFragments.TermsFragment"
+        android:label="TermsFragment" />
+    <dialog
+        android:id="@+id/changePasswordSheetFragment"
+        android:name="com.dotjoo.aghslilnidelivery.ui.dialog.ChangePasswordSheetFragment"
+        android:label="ChangePasswordSheetFragment" />
+    <fragment
+        android:id="@+id/orderInfoFragment"
+        android:name="com.dotjoo.aghslilnidelivery.ui.fragment.main.order.OrderInfoFragment"
+        android:label="OrderInfoFragment" />
+    <dialog
+        android:id="@+id/balanceWithdrawSheetFragment"
+        android:name="com.dotjoo.aghslilnidelivery.ui.dialog.BalanceWithdrawSheetFragment"
+        android:label="BalanceWithdrawSheetFragment" />
+</navigation>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/iv_logo3"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:src="@drawable/notifaction_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+
+            android:id="@+id/tv_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:text="@string/it"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_15sdp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/iv_logo3"       app:layout_constraintStart_toEndOf="@id/iv_logo3"
+            app:layout_constraintTop_toTopOf="@id/iv_logo3" />
+
+
+
+        <androidx.cardview.widget.CardView
+
+            android:id="@+id/card_close"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginVertical="@dimen/_4sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:backgroundTint="@color/white"
+            android:clickable="true"
+            app:cardCornerRadius="@dimen/_20sdp"
+            android:focusable="true"          app:layout_constraintBottom_toBottomOf="@id/tv_contact"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_contact">
+            <ImageView
+                android:id="@+id/iv_close"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_gravity="center"    android:layout_height="@dimen/_20sdp"
+                android:tint="@color/grey_dark"   android:padding="@dimen/_5sdp"
+                android:rotation="180"
+                android:src="@drawable/ic_close"
+
+                app:tint="@color/grey_dark" />
+
+        </androidx.cardview.widget.CardView>
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swiperefresh_home"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/message_card"
+            app:layout_constraintTop_toBottomOf="@id/card_close">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/messages_rv"
+                android:layout_width="match_parent"
+                android:paddingTop="@dimen/_20sdp"            android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:fadeScrollbars="true"
+                android:fadingEdge="vertical"
+                android:paddingHorizontal="@dimen/_8sdp"
+                android:requiresFadingEdge="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="2"
+                tools:listitem="@layout/item_chat" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/message_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_16sdp"
+            android:backgroundTint="@color/white"
+            app:cardCornerRadius="@dimen/_25sdp"
+            app:cardElevation="@dimen/_2sdp"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:strokeColor="@color/light_grey"
+            app:strokeWidth="@dimen/_1sdp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/et_message"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:gravity="start"
+                    android:hint="@string/send_message"
+                    android:importantForAutofill="no"
+                    android:inputType="textMultiLine"
+                    android:maxHeight="@dimen/_120sdp"
+                    android:paddingVertical="@dimen/_14sdp"
+                    android:paddingStart="@dimen/_8sdp"
+                    android:paddingEnd="@dimen/_30sdp"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.cardview.widget.CardView
+
+                    android:id="@+id/card_send"
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginVertical="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_12sdp"
+                    android:backgroundTint="@color/blue"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardCornerRadius="@dimen/_40sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_gravity="center"        android:id="@+id/send_img"
+                        android:layout_width="@dimen/_20sdp"
+                        android:rotation="270"       android:layout_height="@dimen/_20sdp"
+                        android:src="@drawable/ic_send" />
+
+                </androidx.cardview.widget.CardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

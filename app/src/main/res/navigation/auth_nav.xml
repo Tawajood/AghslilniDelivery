@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/auth_nav.xml"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.dotjoo.aghslilnidelivery.ui.fragment.auth.spalsh.SplashFragment"
+        android:label="SplashFragment" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.dotjoo.aghslilnidelivery.ui.fragment.auth.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.dotjoo.aghslilnidelivery.ui.fragment.auth.register.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" />
+    <fragment
+        android:id="@+id/walkThroughFragment"
+        android:name="com.dotjoo.aghslilnidelivery.ui.fragment.auth.walkThrough.WalkThroughFragment"
+        android:label="fragment_walk_through"
+        tools:layout="@layout/fragment_walk_through" />
+    <fragment
+        android:id="@+id/forgetPasswordFragment"
+        android:name="com.dotjoo.aghslilnidelivery.ui.fragment.auth.forgetPass.ForgetPasswordFragment"
+        android:label="fragment_forget_password"
+        tools:layout="@layout/fragment_forget_password" />
+</navigation>
