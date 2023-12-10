@@ -72,15 +72,15 @@
                             android:id="@+id/tv_hi"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_7sdp"
-                            android:drawableEnd="@drawable/ic_hi"
-                            android:text=" يا هلا فيك ! "
+                            android:text="@string/welcome"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_15sdp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="@id/ic_arrow"
-                            app:layout_constraintStart_toEndOf="@id/ic_arrow"
-                            app:layout_constraintTop_toTopOf="@id/ic_arrow" />
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/ic_arrow"
+                            app:drawableEndCompat="@drawable/ic_hi" />
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>

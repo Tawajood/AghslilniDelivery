@@ -6,6 +6,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.dotjoo.aghslilnidelivery.R
 import com.dotjoo.aghslilnidelivery.base.BaseFragment
+import com.dotjoo.aghslilnidelivery.data.PrefsHelper
 import com.dotjoo.aghslilnidelivery.data.response.Profile
 import com.dotjoo.aghslilnidelivery.databinding.FragmentProfileBinding
 import com.dotjoo.aghslilnidelivery.ui.activity.MainActivity
@@ -38,7 +39,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         }
         binding.swiperefreshHome.setOnRefreshListener {
             mViewModel.getProfileData()
-            if (binding.swiperefreshHome != null) binding.swiperefreshHome.isRefreshing = false
+            binding.swiperefreshHome.isRefreshing = false
         }
     }
 
@@ -63,11 +64,11 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
             }
 
             is AccountAction.ShowProfile ->  {
-               action.data.driver?.let { setupProfile(it) }
+                action.data.driver.let { setupProfile(it) }
 
             }
             is AccountAction.ProfileUpdated ->  {
-                action.msg?.let { showToast(it) }
+                action.msg.let { showToast(it) }
 
             }
 
@@ -85,7 +86,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
             binding.etName.setText(it.name)
             binding.ivProfile.loadImage(it.img)
             binding.etPhone.setText(it.phone)
-            countryCode = profile.country_code.toString()
+            countryCode = profile.country_code
 
         }
     }
@@ -103,7 +104,12 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         binding.lytChangePass.setOnClickListener {
             findNavController().navigate(R.id.changePasswordSheetFragment)
         }
-
+        if (PrefsHelper.getLanguage()=="en"){
+            binding.apply {
+                a1.rotationY=180f
+                a2.rotationY=180f
+            }
+        }
 
         binding.cardEdit.setOnClickListener {
             findNavController().navigate(R.id.editProfileFragment, bundleOf("CC" to countryCode))
