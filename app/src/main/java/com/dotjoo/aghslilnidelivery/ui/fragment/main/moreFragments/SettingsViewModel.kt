@@ -147,7 +147,7 @@ class SettingsViewModel
 
             viewModelScope.launch {
                 var res = useCase.invoke(
-                    viewModelScope,
+                    viewModelScope,5
                 ) { res ->
                     when (res) {
                         is Resource.Failure -> produce(SettingAction.ShowFailureMsg(res.message.toString()))

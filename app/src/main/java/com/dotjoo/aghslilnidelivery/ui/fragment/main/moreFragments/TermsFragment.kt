@@ -19,6 +19,7 @@ class TermsFragment   : BaseFragment<FragmentTermsBinding>() {
     override fun onFragmentReady() {
         mViewModel.apply {
             showTerms()
+            showAbout()
             observe(viewState) {
                 handleViewState(it)
             }
@@ -54,6 +55,9 @@ class TermsFragment   : BaseFragment<FragmentTermsBinding>() {
             }
 
             is SettingAction.ShowTerms -> {
+                //binding.tvDesc.text=action.data?.about!!.body
+            }
+            is SettingAction.ShowAbout -> {
                 binding.tvDesc.text=action.data?.about!!.body
             }
 

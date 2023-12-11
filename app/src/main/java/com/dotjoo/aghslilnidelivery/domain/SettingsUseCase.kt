@@ -43,9 +43,13 @@ class SettingsUseCase @Inject constructor(private val repository: Repository):
                  flow {
                      emit(repository.withdraw(params.amount,params.bank_name,params.acount_number))
                  } as Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>>
-             } else {
+             } else if (params ==5){
+                 flow {
+                     emit(repository.terms())
+                 } as Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>>
+             }else  {
                 flow {
-                    emit(repository.terms())
+                    emit(null)
                 } as Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>>
             }
 
