@@ -86,7 +86,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
             binding.etName.setText(it.name)
             binding.ivProfile.loadImage(it.img)
             binding.etPhone.setText(it.phone)
-            binding.ccp.setCountryForPhoneCode(profile.country_code.toInt())
+            binding.ccp.setCountryForPhoneCode(profile.country_code.replace("+", "").toInt())
         }
     }
 

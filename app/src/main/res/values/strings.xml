@@ -41,7 +41,7 @@
     <string name="empty_name_msg">Please Enter your name</string>
     <string name="msg_empty_phone_number">Please enter your Name</string>
     <string name="msg_empty_password">Please enter your password</string>
-    <string name="empty_confirm_password">Olease confirm your password</string>
+    <string name="empty_confirm_password">Please confirm your password</string>
     <string name="both_passwords_must_match">Passwords don\'t match</string>
     <string name="empty_msg_cc">Please Enter Country Code</string>
     <string name="msg_empty_lat">Please Specify your Location</string>
