@@ -27,7 +27,7 @@ class MoreFragment : BaseFragment<FragmentMoreBinding>() {
         binding.tvLogout.setPaintFlags(binding.tvLogout.getPaintFlags() or Paint.UNDERLINE_TEXT_FLAG)
         parent = requireActivity() as MainActivity
         parent.showBottomNav(true)
-        if (PrefsHelper.getLanguage()=="en") {
+        if (PrefsHelper.getLanguage()==Constants.AR) {
             binding.tvLang.text="EN"
         }else{
             binding.tvLang.text="AR"
@@ -40,9 +40,8 @@ class MoreFragment : BaseFragment<FragmentMoreBinding>() {
             findNavController().navigate(R.id.aboutFragment)
         }
         binding.tvSetting.setOnClickListener {
-            if (PrefsHelper.getLanguage()=="en") {
+            if (PrefsHelper.getLanguage()==Constants.EN) {
                 PrefsHelper.setLanguage(Constants.AR)
-
                 showActivity(MainActivity::class.java, clearAllStack = true)
             } else {
                 PrefsHelper.setLanguage(Constants.EN)

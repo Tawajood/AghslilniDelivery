@@ -160,7 +160,7 @@
                                     android:gravity="center_vertical"
                                     android:text="25000"
                                     android:textColor="@color/grey_dark"
-                                    android:textSize="@dimen/_15sdp"
+                                    android:textSize="@dimen/_12sdp"
                                     android:textStyle="bold"
                                     app:layout_constraintTop_toBottomOf="@id/tv_1" />
                             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -206,7 +206,7 @@
                                     android:gravity="center_vertical"
                                     android:text="@string/commetion"
                                     android:textColor="@color/grey"
-                                    android:textSize="@dimen/_12sdp"
+                                    android:textSize="@dimen/_10sdp"
 
                                     app:layout_constraintTop_toBottomOf="@id/iv2" />
 
@@ -218,7 +218,7 @@
                                     android:gravity="center_vertical"
                                     android:text="500"
                                     android:textColor="@color/grey_dark"
-                                    android:textSize="@dimen/_15sdp"
+                                    android:textSize="@dimen/_12sdp"
                                     android:textStyle="bold"
                                     app:layout_constraintTop_toBottomOf="@id/tv_2" />
                             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -272,7 +272,7 @@
                                     android:gravity="center_vertical"
                                     android:text="2000"
                                     android:textColor="@color/grey_dark"
-                                    android:textSize="@dimen/_15sdp"
+                                    android:textSize="@dimen/_12sdp"
                                     android:textStyle="bold"
                                     app:layout_constraintTop_toBottomOf="@id/tv_3" />
                             </androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,7 +23,7 @@ import java.io.File
 class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
     lateinit var parent: MainActivity
     val mViewModel: AccountViewModel by activityViewModels()
-    var countryCode = "+20"
+    //var countryCode = "+20"
 
     var logo : File? = null
 
@@ -86,8 +86,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
             binding.etName.setText(it.name)
             binding.ivProfile.loadImage(it.img)
             binding.etPhone.setText(it.phone)
-            countryCode = profile.country_code
-
+            binding.ccp.setCountryForPhoneCode(profile.country_code.toInt())
         }
     }
 
@@ -112,7 +111,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         }
 
         binding.cardEdit.setOnClickListener {
-            findNavController().navigate(R.id.editProfileFragment, bundleOf("CC" to countryCode))
+            findNavController().navigate(R.id.editProfileFragment)
         }
 
 

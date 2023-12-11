@@ -67,7 +67,7 @@ interface ApiInterface {
         @Part image3: MultipartBody.Part?
     ): NetworkResponse<DevResponse<LoginResponse>, ErrorResponse>
 
-    @POST("profile/change-password")
+    @POST("driver/change/password")
     @FormUrlEncoded
     suspend fun changePassword(
         @Field("old_password") old_password: String,

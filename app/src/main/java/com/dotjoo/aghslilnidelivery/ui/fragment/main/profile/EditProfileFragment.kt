@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.dotjoo.aghslilnidelivery.R
 import com.dotjoo.aghslilnidelivery.base.BaseFragment
 import com.dotjoo.aghslilnidelivery.data.param.UpdateProfileParam
+import com.dotjoo.aghslilnidelivery.data.response.Profile
 import com.dotjoo.aghslilnidelivery.databinding.FragmentEditProfileBinding
 import com.dotjoo.aghslilnidelivery.util.FileManager
 import com.dotjoo.aghslilnidelivery.util.ext.hideKeyboard
@@ -30,6 +31,7 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>() {
 
     override fun onFragmentReady() {
         mViewModel.apply {
+            getProfileData()
             observe(viewState) {
                 handleViewState(it)
             }
@@ -43,12 +45,15 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>() {
             pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
 
         }
+        binding.cardClose.setOnClickListener {
+            findNavController().popBackStack()
+        }
         binding.btnSignup.setOnClickListener {
 
             mViewModel.updateProfile(
                 UpdateProfileParam(
                     binding.etName.text.toString(),
-                    arguments?.getString("CC").toString(),
+                    "+${binding.ccp.selectedCountryCode}",
                     binding.etPhone.text.toString(),
                     logo
                 )
@@ -76,7 +81,7 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>() {
             }
 
             is AccountAction.ShowProfile -> {
-
+                action.data.driver.let { setupProfile(it) }
             }
 
             is AccountAction.ProfileUpdated -> {
@@ -90,7 +95,14 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>() {
             }
         }
     }
-
+    private fun setupProfile(profile: Profile) {
+        profile?.let {
+            binding.etName.setText(it.name)
+            binding.ivProfile.loadImage(it.img)
+            binding.etPhone.setText(it.phone)
+            binding.ccp.setCountryForPhoneCode(profile.country_code.toInt())
+        }
+    }
     private val pickMedia =
         registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
             // Callback is invoked after the user selects a media item or closes the
