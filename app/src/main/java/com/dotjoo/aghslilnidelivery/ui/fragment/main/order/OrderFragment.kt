@@ -66,7 +66,7 @@ import kotlinx.coroutines.launch
 
             is OrderAction.ShowFailureMsg -> action.message?.let {
                 if (it.contains("401") == true) {
-                    findNavController().navigate(R.id.loginFirstBotomSheetFragment)
+                    //findNavController().navigate(R.id.loginFirstBotomSheetFragment)
                 } else {
                     showToast(action.message)
                     showProgress(false)

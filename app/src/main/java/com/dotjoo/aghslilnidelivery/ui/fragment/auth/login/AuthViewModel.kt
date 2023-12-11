@@ -52,7 +52,7 @@ fun isValidParamsChangePass(countryCode: String,    newpass: String, confirmpass
 }
 
     fun isVaildLogin(
-        phone: String?, password: String?
+        phone: String?, password: String?,countryCode: String
     ) { // 1 FOR NORMAL  // 0 FOR LOGIN WITH BIOMETRIC
         if (phone.isNullOrBlank()) {
             produce(AuthAction.ShowFailureMsg(getString(R.string.msg_empty_phone_number)))
@@ -63,21 +63,21 @@ fun isValidParamsChangePass(countryCode: String,    newpass: String, confirmpass
         } else {
 
 
-            loginWithPhoneNumber(phone, password)
+            loginWithPhoneNumber(phone, password,countryCode)
 
             true
 
         }
     }
 
-    fun loginWithPhoneNumber(email: String, password: String, ) {
-        if (app.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) } == true) {
+    fun loginWithPhoneNumber(email: String, password: String,countryCode: String ) {
+        if (app.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) }) {
             produce(AuthAction.ShowLoading(true))
 
             viewModelScope.launch {
                 var res = authUserCase.invoke(
                     viewModelScope, LoginParams(
-                        "+20",
+                        countryCode,
                         email, password
                     ) // static 0 for android devices
                 ) { res ->

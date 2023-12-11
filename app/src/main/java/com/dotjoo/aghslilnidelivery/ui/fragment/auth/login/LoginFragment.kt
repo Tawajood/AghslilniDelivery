@@ -73,7 +73,8 @@ class LoginFragment
         binding.btnSignin.setOnClickListener {
             mViewModel.isVaildLogin(
                 binding.etPhoneNum.text.toString(),
-                binding.etPassword.text.toString()
+                binding.etPassword.text.toString(),
+                "+${binding.ccp.selectedCountryCode}",
             )
             //  action.data.client?.social= action.social
             // PrefsHelper.saveToken("ction.data.token")

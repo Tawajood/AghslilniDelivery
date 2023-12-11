@@ -17,6 +17,7 @@ import com.dotjoo.aghslilnidelivery.ui.fragment.auth.login.AuthAction
 import com.dotjoo.aghslilnidelivery.ui.fragment.auth.login.AuthViewModel
 import com.dotjoo.aghslilnidelivery.util.FileManager
 import com.dotjoo.aghslilnidelivery.util.PermissionManager
+import com.dotjoo.aghslilnidelivery.util.ToastUtils
 import com.dotjoo.aghslilnidelivery.util.ext.hideKeyboard
 import com.dotjoo.aghslilnidelivery.util.ext.loadImage
 import com.dotjoo.aghslilnidelivery.util.ext.showActivity
@@ -33,7 +34,8 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
     private var type: Int = -1
     lateinit var parent: AuthActivity
     private val mViewModel: AuthViewModel by viewModels()
-    var countryCode = "+20"
+
+    //var countryCode = "+20"
     var file_id: File? = null
     var file_driver_lis: File? = null
     var file_car_lisence: File? = null
@@ -92,14 +94,20 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
 
 
         binding.btnSignup.setOnClickListener {
-            mViewModel.isVaildRegisteration(
-                binding.etName.text.toString(),
-                countryCode,
-                binding.etPhone.text.toString(),
-                file_car_lisence, file_driver_lis, file_id,
-                binding.etPassword.text.toString(),
-                binding.etPasswordConfim.text.toString(),
-            )
+            if (file_id==null || file_car_lisence==null||file_driver_lis==null){
+                ToastUtils.showToast(requireContext(),
+                    getString(R.string.please_attach_the_car_papers_and_license))
+            }else{
+                mViewModel.isVaildRegisteration(
+                    binding.etName.text.toString(),
+                    "+${binding.ccp.selectedCountryCode}",
+                    binding.etPhone.text.toString(),
+                    file_car_lisence, file_driver_lis, file_id,
+                    binding.etPassword.text.toString(),
+                    binding.etPasswordConfim.text.toString(),
+                )
+            }
+
         }
         binding.btnSignin.setOnClickListener {
             findNavController().navigate(R.id.loginFragment)
@@ -152,14 +160,14 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
                     FileManager.from(requireActivity(), it)?.let { file ->
                         if (type == 0) {
                             file_car_lisence = file
-binding.ivCarLisence.loadImage(file, isCircular = true)
+                            binding.ivCarLisence.loadImage(file, isCircular = true)
                             //      binding.ivProfile.loadImage(file, isCircular = true)
                         } else if (type == 1) {
                             file_driver_lis = file
                             binding.ivDrivingLisence.loadImage(file, isCircular = true)
 
                         } else if (type == 2) {
-                            binding.ivId.loadImage(file , isCircular = true)
+                            binding.ivId.loadImage(file, isCircular = true)
                             file_id = file
 
                         }

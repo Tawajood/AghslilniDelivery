@@ -64,14 +64,33 @@
                     android:background="@drawable/bg_light_blue"
                     android:hint="@string/phone_number"
                     android:minHeight="@dimen/_40sdp"
-                    android:text="01014324321"          android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:text="01014324322"
                     android:textColor="@color/grey_dark1"
                     android:textColorHint="@color/light_grey1"
                     android:textSize="@dimen/_13sdp"
+                    android:inputType="number"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_1" />
 
+                <com.hbb20.CountryCodePicker
+                    android:id="@+id/ccp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:ccpDialog_cornerRadius="@dimen/_12sdp"
+                    app:ccp_arrowColor="@color/black"
+                    app:ccp_autoDetectCountry="true"
+                    app:ccp_contentColor="@color/black"
+                    app:ccp_defaultNameCode="sa"
+                    app:ccp_excludedCountries="il"
+                    app:ccp_rememberLastSelection="true"
+                    app:ccp_showNameCode="false"
+                    app:ccp_textSize="@dimen/_12sdp"
+                    app:layout_constraintBottom_toBottomOf="@+id/et_phone_num"
+                    app:layout_constraintEnd_toEndOf="@+id/et_phone_num"
+                    app:layout_constraintTop_toTopOf="@+id/et_phone_num" />
                 <TextView
                     android:id="@+id/tv_2"
                     android:layout_width="0dp"
@@ -108,16 +127,19 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_password"
                         android:layout_width="match_parent"
-                        android:text="123456"            android:layout_height="wrap_content"
+                        android:layout_height="wrap_content"
                         android:autofillHints="password"
-                        android:textSize="@dimen/_14sdp"             android:background="@drawable/bg_light_blue"
-                        android:paddingHorizontal="@dimen/_12sdp"     android:hint="@string/password"
+                        android:background="@drawable/bg_light_blue"
+                        android:hint="@string/password"
                         android:inputType="textPassword"
                         android:minHeight="@dimen/_40sdp"
+                        android:paddingHorizontal="@dimen/_12sdp"
                         android:paddingVertical="@dimen/_5sdp"
+                        android:text="123456"
                         android:textAlignment="viewStart"
+                        android:textColorHint="@color/light_grey1"
 
-                        android:textColorHint="@color/light_grey1" />
+                        android:textSize="@dimen/_14sdp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView

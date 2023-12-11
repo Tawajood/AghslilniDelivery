@@ -2,11 +2,7 @@ package com.dotjoo.aghslilnidelivery.ui.fragment.auth.forgetPass
 
 import android.content.Intent
 import android.graphics.Paint
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.dotjoo.aghslilnidelivery.R
@@ -29,7 +25,7 @@ class ForgetPasswordFragment : BaseFragment<FragmentForgetPasswordBinding>() {
     var state = 1
 
     private val mViewModel: AuthViewModel by viewModels()
-    var countryCode = "+20"
+    //var countryCode = "+20"
     override fun onFragmentReady() {
         state1()
         onClick()
@@ -94,7 +90,7 @@ class ForgetPasswordFragment : BaseFragment<FragmentForgetPasswordBinding>() {
                 showToast(resources.getString(R.string.msg_empty_phone_number))
             else {
                 mViewModel.email = binding.etPhone.text.toString()
-                mViewModel.checkPhone(countryCode, mViewModel.email.toString())
+                mViewModel.checkPhone("+${binding.ccp.selectedCountryCode}", mViewModel.email.toString())
             }
         }
         binding.btnEnterOtp.setOnClickListener {
@@ -103,7 +99,7 @@ class ForgetPasswordFragment : BaseFragment<FragmentForgetPasswordBinding>() {
             else {
                 mViewModel.otp = binding.etOtp.otp.toString()
                 mViewModel.checkOtp(
-                    countryCode,
+                    "+${binding.ccp.selectedCountryCode}",
                     mViewModel.email.toString(),
                     mViewModel.otp.toString()
                 )
@@ -114,7 +110,7 @@ class ForgetPasswordFragment : BaseFragment<FragmentForgetPasswordBinding>() {
         }
         binding.btnEnterPass.setOnClickListener {
             mViewModel.isValidParamsChangePass(
-                countryCode,
+                "+${binding.ccp.selectedCountryCode}",
                 binding.etPassword.text.toString(),
                 binding.etPasswordConfim.text.toString()
             )
