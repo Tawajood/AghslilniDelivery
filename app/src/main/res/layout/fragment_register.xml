@@ -34,7 +34,7 @@
                     android:layout_width="@dimen/_50sdp"
                     android:layout_height="@dimen/_50sdp"
                     android:layout_marginVertical="@dimen/_10sdp"
-                    android:src="@drawable/logo"
+                    android:src="@drawable/logo_auth"
                     app:layout_constraintEnd_toEndOf="parent"
 
                     app:layout_constraintStart_toStartOf="parent"
@@ -95,16 +95,17 @@
                     android:layout_marginTop="@dimen/_3sdp"
                     android:background="@drawable/bg_light_blue"
                     android:hint="@string/phone_number"
+                    android:inputType="number"
                     android:minHeight="@dimen/_40sdp"
                     android:paddingHorizontal="@dimen/_15sdp"
                     android:textColor="@color/grey_dark"
                     android:textColorHint="@color/light_grey1"
                     android:textSize="@dimen/_11sdp"
                     android:textStyle="bold"
-                    android:inputType="number"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_1"
                     tools:ignore="TextFields" />
+
                 <com.hbb20.CountryCodePicker
                     android:id="@+id/ccp"
                     android:layout_width="wrap_content"
@@ -240,11 +241,11 @@
                     android:layout_marginTop="@dimen/_25sdp"
                     android:drawableStart="@drawable/gallery_with_card"
                     android:drawablePadding="@dimen/_6sdp"
-                    android:textColor="@color/grey_dark"
-               android:textStyle="bold"
-                    android:textSize="@dimen/_14sdp"
                     android:gravity="center_vertical"
                     android:text="@string/driving_lisence"
+                    android:textColor="@color/grey_dark"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toStartOf="@id/guideline"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/lyt_pass_confirm" />
@@ -252,8 +253,9 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/card_img_driving_lisence"
                     android:layout_width="@dimen/_50sdp"
-                    android:backgroundTint="@color/transparent"            android:layout_height="@dimen/_50sdp"
-                    app:cardCornerRadius="@dimen/_30sdp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:backgroundTint="@color/transparent"
+                    app:cardCornerRadius="@dimen/_40sdp"
                     app:layout_constraintEnd_toStartOf="@id/guideline"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tx0"
@@ -261,34 +263,38 @@
 
                     <ImageView
                         android:id="@+id/iv_driving_lisence"
-                android:scaleType="centerCrop"        android:layout_width="@dimen/_40sdp"
-                   android:layout_gravity="center"     android:layout_height="@dimen/_40sdp"
-                         android:src="@drawable/tst"  />
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_gravity="center"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/tst" />
 
                 </com.google.android.material.card.MaterialCardView>
 
-        <TextView
+                <TextView
                     android:id="@+id/tx1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                     android:layout_marginTop="@dimen/_25sdp"
+                    android:layout_marginTop="@dimen/_25sdp"
                     android:drawableStart="@drawable/gallery_with_card"
-            android:textColor="@color/grey_dark"
-            android:textStyle="bold"
-            android:textSize="@dimen/_14sdp"           android:drawablePadding="@dimen/_6sdp"
+                    android:drawablePadding="@dimen/_6sdp"
                     android:gravity="center_vertical"
                     android:text="@string/car_lisence"
-                    app:layout_constraintStart_toEndOf="@id/guideline"
+                    android:textColor="@color/grey_dark"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/guideline"
                     app:layout_constraintTop_toBottomOf="@id/lyt_pass_confirm" />
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/card_img_car_lisence"
                     android:layout_width="@dimen/_50sdp"
                     android:layout_height="@dimen/_50sdp"
-                    app:cardCornerRadius="@dimen/_30sdp"
-            android:backgroundTint="@color/transparent"        app:layout_constraintStart_toEndOf="@id/guideline"
+                    android:backgroundTint="@color/transparent"
+                    app:cardCornerRadius="@dimen/_40sdp"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/guideline"
                     app:layout_constraintTop_toBottomOf="@id/tx1"
                     app:strokeColor="@color/light_grey">
 
@@ -296,20 +302,25 @@
                     <ImageView
                         android:id="@+id/iv_car_lisence"
                         android:layout_width="@dimen/_40sdp"
-                android:scaleType="centerCrop"        android:layout_gravity="center"     android:layout_height="@dimen/_40sdp"
-                        android:src="@drawable/tst"  />
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_gravity="center"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/tst" />
                 </com.google.android.material.card.MaterialCardView>
+
                 <TextView
                     android:id="@+id/tx2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                     android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginHorizontal="@dimen/_10sdp"            android:drawableStart="@drawable/gallery_with_card"
-            android:textColor="@color/grey_dark"
-            android:textStyle="bold"
-            android:textSize="@dimen/_14sdp"           android:drawablePadding="@dimen/_6sdp"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:drawableStart="@drawable/gallery_with_card"
+                    android:drawablePadding="@dimen/_6sdp"
                     android:gravity="center_vertical"
                     android:text="@string/id_img"
+                    android:textColor="@color/grey_dark"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toStartOf="@id/guideline"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/card_img_driving_lisence" />
@@ -318,18 +329,20 @@
                     android:id="@+id/card_img_id"
                     android:layout_width="@dimen/_50sdp"
                     android:layout_height="@dimen/_50sdp"
-                    app:cardCornerRadius="@dimen/_30sdp"
+                    android:backgroundTint="@color/transparent"
+                    app:cardCornerRadius="@dimen/_40sdp"
                     app:layout_constraintEnd_toStartOf="@id/guideline"
-                    android:backgroundTint="@color/transparent"   app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tx2"
                     app:strokeColor="@color/light_grey">
 
                     <ImageView
                         android:id="@+id/iv_id"
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_gravity="center"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/tst"          android:layout_width="@dimen/_40sdp"
-                        android:layout_gravity="center"     android:layout_height="@dimen/_40sdp"
-                  />
+                        android:src="@drawable/tst" />
                 </com.google.android.material.card.MaterialCardView>
 
 
@@ -375,6 +388,7 @@
                     android:layout_marginTop="@dimen/_20sdp"
                     android:backgroundTint="@color/blue"
                     android:text="@string/signup"
+                    android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_12sdp"
                     android:textStyle="bold"
@@ -389,6 +403,7 @@
                     android:layout_marginTop="@dimen/_4sdp"
                     android:backgroundTint="@color/light_grey"
                     android:text="@string/login_now"
+                    android:textAllCaps="false"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12sdp"
                     android:textStyle="bold"

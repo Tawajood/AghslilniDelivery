@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "612208920085",
+    "project_id": "eghslni",
+    "storage_bucket": "eghslni.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:612208920085:android:8d2ef0c9e50b5505c5f01c",
+        "android_client_info": {
+          "package_name": "com.dotjoo.aghsilinicustomer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBH7kgKhstxOIlvmyd7jIB6tQ_Eem7aYQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:612208920085:android:7600ab9376e17283c5f01c",
+        "android_client_info": {
+          "package_name": "com.dotjoo.aghsilinilaundry"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBH7kgKhstxOIlvmyd7jIB6tQ_Eem7aYQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:612208920085:android:84d878dfe3e3c81dc5f01c",
+        "android_client_info": {
+          "package_name": "com.dotjoo.aghslilnidelivery"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBH7kgKhstxOIlvmyd7jIB6tQ_Eem7aYQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

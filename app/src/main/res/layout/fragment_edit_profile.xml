@@ -24,6 +24,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
+                android:visibility="gone"
+                android:id="@+id/lyt_data"
                 android:layout_height="match_parent"
                 tools:context=".ui.fragment.order.OrderFragment">
 
@@ -159,7 +161,7 @@
                     android:background="@drawable/bg_light_blue"
                     android:hint="@string/phone_number"
                     android:inputType="phone"
-                    android:minHeight="@dimen/_40sdp"
+              android:textAlignment="viewStart"      android:minHeight="@dimen/_40sdp"
                     android:paddingHorizontal="@dimen/_12sdp"
                     android:textColor="@color/grey_dark"
                     android:textSize="@dimen/_11sdp"
@@ -183,7 +185,7 @@
                     app:ccp_showNameCode="false"
                     app:ccp_textSize="@dimen/_12sdp"
                     app:layout_constraintBottom_toBottomOf="@+id/et_phone"
-                    app:layout_constraintStart_toStartOf="@+id/et_phone"
+                    app:layout_constraintEnd_toEndOf="@+id/et_phone"
                     app:layout_constraintTop_toTopOf="@+id/et_phone" />
 
                 <com.google.android.material.button.MaterialButton
@@ -195,7 +197,7 @@
                     android:backgroundTint="@color/blue"
                     android:text="@string/save"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_12sdp"
+      android:textAllCaps="false"              android:textSize="@dimen/_12sdp"
                     android:textStyle="bold"
                     app:cornerRadius="@dimen/_21sdp"
                     app:layout_constraintTop_toBottomOf="@id/et_phone" />

@@ -75,7 +75,7 @@
             android:textColor="@color/white"
             android:textSize="@dimen/_12sdp"
             android:textStyle="bold"
-            app:cornerRadius="@dimen/_21sdp"
+            android:textAllCaps="false"           app:cornerRadius="@dimen/_21sdp"
             app:layout_constraintEnd_toStartOf="@id/guideline"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_2" />
@@ -87,7 +87,7 @@
             android:layout_marginHorizontal="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_30sdp"
             android:backgroundTint="@color/light_grey"
-            android:text="@string/no_thankes"
+         android:textAllCaps="false"   android:text="@string/no_thankes"
             android:textColor="@color/black"
             android:textSize="@dimen/_12sdp"
             android:textStyle="bold"

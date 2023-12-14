@@ -3,6 +3,7 @@ package com.dotjoo.aghslilnidelivery.ui.fragment.main.more
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Paint
+import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.dotjoo.aghslilnidelivery.R
@@ -37,7 +38,12 @@ class MoreFragment : BaseFragment<FragmentMoreBinding>() {
             }
 
         }
-        onClick()   }
+        binding.swiperefreshHome.setOnRefreshListener {
+            mViewModel.getProfileData()
+            if (binding.swiperefreshHome != null) binding.swiperefreshHome.isRefreshing = false
+        }
+        onClick()
+    }
 
 
     @SuppressLint("SetTextI18n")
@@ -59,20 +65,23 @@ class MoreFragment : BaseFragment<FragmentMoreBinding>() {
                 }
             }
 
-            is AccountAction.ShowProfile ->  {
+            is AccountAction.ShowProfile -> {
                 action.data.driver.let {
                     val df = DecimalFormat("#.##")
                     df.roundingMode = RoundingMode.CEILING
-                    binding.tvTotalValue.text= df.format(it.total).toString()+" "+getString(R.string.sr)
-                    binding.tvFavValue.text= df.format(it.balance).toString()+" "+getString(R.string.sr)
+                    binding.tvTotalValue.text =
+                        df.format(it.total).toString() + " " + getString(R.string.sr)
+                    binding.tvFavValue.text =
+                        df.format(it.balance).toString() + " " + getString(R.string.sr)
+                    binding.lytBalanceDetails.isVisible = true
                 }
 
             }
-            is AccountAction.ProfileUpdated ->  {
+
+            is AccountAction.ProfileUpdated -> {
                 action.msg.let { showToast(it) }
 
             }
-
 
 
             else -> {
@@ -86,10 +95,10 @@ class MoreFragment : BaseFragment<FragmentMoreBinding>() {
         binding.tvLogout.paintFlags = binding.tvLogout.paintFlags or Paint.UNDERLINE_TEXT_FLAG
         parent = requireActivity() as MainActivity
         parent.showBottomNav(true)
-        if (PrefsHelper.getLanguage()==Constants.AR) {
-            binding.tvLang.text="EN"
-        }else{
-            binding.tvLang.text="AR"
+        if (PrefsHelper.getLanguage() == Constants.AR) {
+            binding.tvLang.text = "EN"
+        } else {
+            binding.tvLang.text = "AR"
         }
 
         binding.tvContactus.setOnClickListener {
@@ -99,7 +108,7 @@ class MoreFragment : BaseFragment<FragmentMoreBinding>() {
             findNavController().navigate(R.id.aboutFragment)
         }
         binding.tvSetting.setOnClickListener {
-            if (PrefsHelper.getLanguage()==Constants.EN) {
+            if (PrefsHelper.getLanguage() == Constants.EN) {
                 PrefsHelper.setLanguage(Constants.AR)
                 showActivity(MainActivity::class.java, clearAllStack = true)
             } else {
@@ -117,9 +126,9 @@ class MoreFragment : BaseFragment<FragmentMoreBinding>() {
             findNavController().navigate(R.id.itFragment)
         }
         binding.tvWithdraw.setOnClickListener {
-                BalanceWithdrawSheetFragment.newInstance(object : OnClickLoginFirst {
-                    override fun onClick(choice: String) {}
-                }).show(childFragmentManager, BalanceWithdrawSheetFragment::class.java.canonicalName)
+            BalanceWithdrawSheetFragment.newInstance(object : OnClickLoginFirst {
+                override fun onClick(choice: String) {}
+            }).show(childFragmentManager, BalanceWithdrawSheetFragment::class.java.canonicalName)
 
 
         }
@@ -128,7 +137,7 @@ class MoreFragment : BaseFragment<FragmentMoreBinding>() {
             PrefsHelper.clear()
             val intent = Intent(activity, AuthActivity::class.java)
             intent.putExtra(Constants.Start, Constants.login)
-            activity?. startActivity(intent)
+            activity?.startActivity(intent)
             activity?.finish()
         }
 

@@ -11,6 +11,7 @@ import com.dotjoo.aghslilnidelivery.data.param.ResetPasswordParams
 import com.dotjoo.aghslilnidelivery.data.param.UpdateProfileParam
 import com.dotjoo.aghslilnidelivery.data.param.toMap
 import com.dotjoo.aghslilnidelivery.data.webService.ApiInterface
+import com.dotjoo.aghslilnidelivery.fcm.FcmParam
 import com.dotjoo.aghslilnidelivery.util.FileManager.toMultiPart
 import retrofit2.http.Body
 import javax.inject.Inject
@@ -27,9 +28,9 @@ class Repository @Inject constructor(
         param.file_id?.toMultiPart("national_id"),
         )
 
-    /* suspend fun updateProfile(param: UpdateProfileParam) =
-         api.updateProfile(param.toMap(), param.logo?.toMultiPart("logo"))
- */
+  suspend fun updateFcnToken(param: FcmParam) =
+         api.updateFcnToken(param.token)
+
     suspend fun changePassword(param: ChangPasswordParam) =
         api.changePassword(param.pass, param.new_pass, param.new_pass_confirm)
 

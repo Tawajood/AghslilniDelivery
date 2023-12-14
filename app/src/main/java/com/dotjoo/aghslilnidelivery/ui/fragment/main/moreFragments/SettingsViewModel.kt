@@ -162,7 +162,25 @@ class SettingsViewModel
             produce(SettingAction.ShowFailureMsg(getString(R.string.no_internet)))
         }
     }
+    fun isVaildWithdraw(amount: String, bank_name: String, account_number: String) {
+        if (amount.isNullOrBlank()) {
+            produce(SettingAction.ShowFailureMsg(getString(R.string.msg_empty_amount)))
+            false
 
+        } else if (bank_name.isNullOrBlank()) {
+            produce(SettingAction.ShowFailureMsg(getString(R.string.msg_empty_bank_name)))
+            false
+
+        } else if (account_number.isNullOrBlank()) {
+            produce(SettingAction.ShowFailureMsg(getString(R.string.empty_account_number)))
+            false
+
+        } else withdraw(WithdrawPrams(
+            amount, bank_name, account_number
+        ))
+
+
+    }
     fun withdraw(prams:WithdrawPrams) {
         if (app.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) }) {
             produce(SettingAction.ShowLoading(true))

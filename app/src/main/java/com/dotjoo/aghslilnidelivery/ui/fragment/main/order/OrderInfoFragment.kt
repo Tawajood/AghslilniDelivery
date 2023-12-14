@@ -28,8 +28,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class OrderInfoFragment : BaseFragment<FragmentOrderInfoBinding>() {
     val mViewModel: OrderViewModel by activityViewModels()
     lateinit var adapter: OrderInfoItemsAdapter
-    var list = arrayListOf<OrderInfoItem>()
-    var state: String? = null
+     var state: String? = null
     override fun onFragmentReady() {
         initAdapters()
         onClick()
@@ -236,6 +235,13 @@ if (recive_from == "customer"){
                 binding.btnStatus.setText(resources.getString(R.string.dropoff))
 
             }
+            Constants.DRIVER_IN_WAY_TO_LAUNDRY -> {
+                binding.ivStatus.loadImage(resources.getDrawable(R.drawable.state3))
+                binding.tvStatus.setText(resources.getString(R.string.driver_on_way))
+                binding.lytNewOrder.isVisible = false
+                binding.btnStatus.isVisible = false
+
+            }
 
             Constants.DRIVER_RECIVE_FROM_CUSTOMER -> {
                 binding.ivStatus.loadImage(resources.getDrawable(R.drawable.state5))
@@ -245,6 +251,12 @@ binding.btnStatus.setText(resources.getString(R.string.compeleted))
                 binding.tvStatus.setText(resources.getString(R.string.dropoff))
 
             }
+
+
+
+
+
+
 
             Constants.LAUNDRY_RECIVE -> {
                 binding.ivStatus.loadImage(resources.getDrawable(R.drawable.state6))
@@ -261,7 +273,7 @@ binding.btnStatus.setText(resources.getString(R.string.compeleted))
 
                 binding.btnStatus.isVisible = true
 
-                binding.btnStatus.setText(resources.getString(R.string.compeleted))
+                binding.btnStatus.setText(resources.getString(R.string.deliver))
                 binding.tvStatus.setText(resources.getString(R.string.dropoff))
 
 

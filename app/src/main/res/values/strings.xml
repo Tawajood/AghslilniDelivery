@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AghslilniDelivery</string>
+    <string name="app_name">AghslilniDe</string>
     <string name="retry">Retry</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="skip">Skip</string>
@@ -71,6 +71,7 @@
     <string name="new_order">New Order</string>
     <string name="driver_on_way">driver on way</string>
     <string name="deliverd">sent delivered handed</string>
+    <string name="deliver">Deliver</string>
     <string name="change_password">Change Password</string>
     <string name="delete_acc">Delete Account</string>
     <string name="delivery_addres">Delivery addresses</string>
@@ -121,10 +122,16 @@
     <string name="agree">Agree</string>
     <string name="decline">Decline</string>
     <string name="edit_bill">Edit invoice</string>
-    <string name="dropoff">It was received</string>
+    <string name="dropoff">Received</string>
     <string name="sr">S.R</string>
-    <string name="compeleted">sent delivered handed</string>
+    <string name="compeleted">Compeleted</string>
     <string name="items">Items</string>
-    <string name="welcome">You are welcome !</string>
+    <string name="welcome">Welcome !</string>
     <string name="please_attach_the_car_papers_and_license">Please attach the car papers and license</string>
+
+    <string name="msg_empty_amount">Please enter the amount</string>
+    <string name="msg_empty_bank_name">Please enter the bank name</string>
+    <string name="empty_account_number">Please enter the account number</string>
+    <string name="dear">Dear ...</string>
+    <string name="request_has_been_sent">Your account will be activated after reviewing the data by the application</string>
 </resources>

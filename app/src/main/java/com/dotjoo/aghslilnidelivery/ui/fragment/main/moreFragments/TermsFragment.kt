@@ -29,11 +29,16 @@ class TermsFragment   : BaseFragment<FragmentTermsBinding>() {
     }
 
     private fun onClick() {
-        parent = requireActivity() as MainActivity
-        parent.showBottomNav(false)
-        binding.toolbar.card_back.setOnClickListener {
-            findNavController().navigateUp()
-        }    }
+     try {
+         parent = requireActivity() as MainActivity
+         parent.showBottomNav(false)
+         binding.toolbar.card_back.setOnClickListener {
+             findNavController().navigateUp()
+         }
+     }  catch (e:Exception){
+
+     }
+    }
     fun handleViewState(action: SettingAction) {
         when (action) {
             is SettingAction.ShowLoading -> {

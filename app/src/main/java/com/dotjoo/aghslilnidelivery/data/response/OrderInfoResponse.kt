@@ -81,7 +81,7 @@ data class OrderInfo(
     @SerializedName("delivery"      ) var delivery     : String?              = null,
     @SerializedName("progress"      ) var progress     : String?              = null,
     @SerializedName("address"      ) var address     : String?              = null,
-    @SerializedName("phone"      ) var phone     : String?              = null,
+    @SerializedName("customer_phone"      ) var phone     : String?              = null,
     @SerializedName("total"         ) var total        : String?              = null,
     @SerializedName("customer_name" ) var customerName : String?           = null,
     @SerializedName("lat"           ) var lat          : String?           = null,
@@ -117,7 +117,8 @@ data class Item(
 @SerializedName("argent_price" ) var argentPrice : Int?    = null,
 @SerializedName("created_at"   ) var createdAt   : String? = null,
 @SerializedName("updated_at"   ) var updatedAt   : String? = null,
-@SerializedName("name"         ) var name        : String? = null
+@SerializedName("name"         ) var name        : String? = null,
+    @SerializedName("service_name" ) var service_name : String?    = null,
 
 ) : Parcelable
 

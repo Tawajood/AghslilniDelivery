@@ -17,6 +17,7 @@ import com.dotjoo.aghslilnidelivery.domain.OrderActionUseCase.OrderTypes.reject
 import com.dotjoo.aghslilnidelivery.domain.OrderUseCase
 import com.dotjoo.aghslilnidelivery.domain.OrderUseCase.OrderTypes.CURRENT
 import com.dotjoo.aghslilnidelivery.domain.OrderUseCase.OrderTypes.PREV
+import com.dotjoo.aghslilnidelivery.fcm.FcmUseCase
 import com.dotjoo.aghslilnidelivery.util.NetworkConnectivity
 import com.dotjoo.aghslilnidelivery.util.Resource
 
@@ -34,6 +35,7 @@ class OrderViewModel
     app: Application,
     val useCase: OrderUseCase,
     val useCaseOrderActions: OrderActionUseCase,
+    val useCaseFcm: FcmUseCase,
  ) : BaseViewModel<OrderAction>(app) {
 
     private val _cuurentOrders =
@@ -46,6 +48,8 @@ var orderId:String? =null
     init {
          getNewOrders("29.8494216","31.3441353"  )
         getCurrentOrder()
+        getPrevOrder()
+        updateToken()
      }
 
     fun getCurrentOrder() {
@@ -106,27 +110,15 @@ var orderId:String? =null
                     when (res) {
                         is Resource.Failure -> {
                             produce(OrderAction.ShowFailureMsg(res.message.toString()))
-                            viewModelScope.launch {
 
-                                _cuurentOrders.emit(Resource.Failure(res.message.toString()  ))
-                            }
                         }
                         is Resource.Progress -> {
                             produce(OrderAction.ShowLoading(res.loading))
-                            viewModelScope.launch {
 
-                                _cuurentOrders.emit(Resource.loading(res.loading, null))
-                            }
                         }
                         is Resource.Success -> {
-                            produce(OrderAction.CurrentOrders(res.data?.data as AlOrdersResponse))
-                            viewModelScope.launch {
-
-                                Resource.Success((res.data?.data as AlOrdersResponse).orders)
-                                    ?.let { _cuurentOrders.emit(it) }
-                            }
-                            //     produce(OrderAction.ShowNearestLaundries(res.data.data as AllLaundriesResponse))
-                        }
+                            produce(OrderAction.PrevOrders(res.data?.data as AlOrdersResponse))
+                                }
                     }
 
                 }
@@ -284,8 +276,13 @@ var orderId:String? =null
             produce(OrderAction.ShowFailureMsg(getString(R.string.no_internet)))
         }
     }
-
+    fun updateToken(    ) {
+        if (app.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) } == true) {
+            useCaseFcm.generateFcmToken()
+        }
+    }
 }
+
 
 
 

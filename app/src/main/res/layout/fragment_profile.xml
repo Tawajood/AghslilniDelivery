@@ -99,8 +99,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:paddingBottom="@dimen/_11sdp">
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                android:id="@+id/lyt_data"    android:layout_width="match_parent"
+               android:visibility="gone"     android:layout_height="match_parent">
 
                     <TextView
                         android:id="@+id/tv_name"

@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.dotjoo.aghslilnidelivery.R
@@ -16,6 +17,7 @@ import com.dotjoo.aghslilnidelivery.base.BaseFragment
 import com.dotjoo.aghslilnidelivery.data.param.UpdateProfileParam
 import com.dotjoo.aghslilnidelivery.data.response.Profile
 import com.dotjoo.aghslilnidelivery.databinding.FragmentEditProfileBinding
+import com.dotjoo.aghslilnidelivery.ui.activity.MainActivity
 import com.dotjoo.aghslilnidelivery.util.FileManager
 import com.dotjoo.aghslilnidelivery.util.ext.hideKeyboard
 import com.dotjoo.aghslilnidelivery.util.ext.loadImage
@@ -28,6 +30,7 @@ import java.io.File
 class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>() {
     var logo: File? = null
     val mViewModel: AccountViewModel by activityViewModels()
+    lateinit var parent: MainActivity
 
     override fun onFragmentReady() {
         mViewModel.apply {
@@ -40,7 +43,8 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>() {
     }
 
     private fun onclick() {
-
+        parent = requireActivity() as MainActivity
+        parent.showBottomNav(false)
         binding.cardGallay.setOnClickListener {
             pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
 
@@ -98,10 +102,10 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>() {
     private fun setupProfile(profile: Profile) {
         profile?.let {
             binding.etName.setText(it.name)
-            binding.ivProfile.loadImage(it.img)
+            binding.ivProfile.loadImage(it.img , isCircular = true)
             binding.etPhone.setText(it.phone)
             binding.ccp.setCountryForPhoneCode(profile.country_code.replace("+", "").toInt())
-        }
+      binding.lytData.isVisible= true  }
     }
     private val pickMedia =
         registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->

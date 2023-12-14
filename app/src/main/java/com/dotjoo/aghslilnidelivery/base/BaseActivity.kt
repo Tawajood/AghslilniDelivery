@@ -10,6 +10,7 @@ import androidx.databinding.ObservableBoolean
 import androidx.databinding.ViewDataBinding
 import android.content.Context
 import android.content.ContextWrapper
+import android.view.WindowManager
 import com.dotjoo.aghslilnidelivery.data.PrefsHelper
 import com.dotjoo.aghslilnidelivery.util.LanguageUtils
 import com.dotjoo.aghslilnidelivery.util.ext.bindView
@@ -41,6 +42,7 @@ import java.util.Locale
     public override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         binding = bindView()
     }
 

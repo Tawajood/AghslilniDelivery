@@ -11,6 +11,9 @@ import com.dotjoo.aghslilnidelivery.databinding.ActivityMainBinding
 
 @AndroidEntryPoint
 class MainActivity: BaseActivity<ActivityMainBinding>() {
+    companion object{
+        val MAIN_SCREEN_ACTION ="main_screen_action"
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.progress = baseShowProgress

@@ -1,5 +1,7 @@
 package com.dotjoo.aghslilnidelivery.ui.fragment.main.order
 
+import android.util.Log
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -16,15 +18,17 @@ import com.dotjoo.aghslilnidelivery.ui.adapter.OrderType.NEW
 import com.dotjoo.aghslilnidelivery.ui.fragment.main.home.OrderAction
 import com.dotjoo.aghslilnidelivery.ui.fragment.main.home.OrderViewModel
 import com.dotjoo.aghslilnidelivery.ui.lisener.OnOrderClickListener
-import com.dotjoo.aghslilnidelivery.util.Resource
+import com.dotjoo.aghslilnidelivery.util.PermissionManager
+import com.dotjoo.aghslilnidelivery.util.WWLocationManager
 import com.dotjoo.aghslilnidelivery.util.ext.hideKeyboard
 import com.dotjoo.aghslilnidelivery.util.ext.init
 import com.dotjoo.aghslilnidelivery.util.observe
+import com.dotjoo.aghslilnidelivery.util.openLocationSettingsResultLauncher
+import com.dotjoo.aghslilnidelivery.util.requestAppPermissions
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.toolbar.view.card_back
 import kotlinx.android.synthetic.main.toolbar.view.tv_title
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
@@ -35,7 +39,13 @@ import kotlinx.coroutines.launch
         var listNew = arrayListOf<Order>()
         var listCurrent = arrayListOf<Order>()
         var listPrev = arrayListOf<Order>()
-        override fun onFragmentReady() {
+      var state = NEW
+
+    @Inject
+    lateinit var permissionManager: PermissionManager
+    @Inject
+    lateinit var locationManager: WWLocationManager
+    override fun onFragmentReady() {
             initAdapters()
             onClick()
 
@@ -48,6 +58,7 @@ import kotlinx.coroutines.launch
             }
             binding.swiperefreshHome.setOnRefreshListener {
                 mViewModel.getCurrentOrder()
+                mViewModel.getPrevOrder()
                 mViewModel.getNewOrders("29.8494216","31.3441353"  )
                  //mViewModel.getAllLaundries(lat,lang)
                 if (binding.swiperefreshHome != null) binding.swiperefreshHome.isRefreshing = false
@@ -75,15 +86,17 @@ import kotlinx.coroutines.launch
 
             is OrderAction.NewOrders -> {
                 listNew= action.data.orders
-           loadLaundries(listNew, NEW)
+       if(state== NEW)    loadLaundries(listNew, NEW)
 
             }
       is OrderAction.CurrentOrders -> {
                 listCurrent= action.data.orders
+          if(state== CURRNET)    loadLaundries(listCurrent, CURRNET)
 
             }
             is OrderAction.PrevOrders->{
                 listPrev = action.data.orders
+                if(state== FINISHED)    loadLaundries(listPrev, FINISHED)
             }
 
 
@@ -127,69 +140,6 @@ import kotlinx.coroutines.launch
             }
         }
 
-        private fun observeData() {
-            lifecycleScope.launch {
-                mViewModel.new.collectLatest {
-                    //      binding.refresher.isRefreshing = false
-                    when (it) {
-                        is Resource.Failure -> {
-                            if (it.message?.contains("401") == true) {
-                                findNavController().navigate(R.id.loginFirstBotomSheetFragment)
-
-                            } else {
-                                showToast(it.message)
-                                showProgress(false)
-                            }
-                        }
-
-                        is Resource.Progress -> {
-
-                            showProgress(it.loading)
-                            if (it.loading) {
-                                hideKeyboard()
-                            }
-                        }
-
-                        is Resource.Success -> {
-                            listNew = it.data as ArrayList<Order>
-                            adapter.ordersList = listNew
-                            loadLaundries(listNew, NEW)
-
-                        }
-                    }
-                }
-
-                mViewModel.current.collectLatest {
-                    //      binding.refresher.isRefreshing = false
-                    when (it) {
-                        is Resource.Failure -> {
-                            if (it.message?.contains("401") == true) {
-                                findNavController().navigate(R.id.loginFirstBotomSheetFragment)
-
-                            } else {
-                                showToast(it.message)
-                                showProgress(false)
-                            }
-                        }
-
-                        is Resource.Progress -> {
-
-                            showProgress(it.loading)
-                            if (it.loading) {
-                                hideKeyboard()
-                            }
-                        }
-
-                        is Resource.Success -> {
-                            listCurrent = it.data as ArrayList<Order>
-
-                        //    adapter.ordersList = arrayListOf()
-                            // loadLaundries(listNew, CURRNET)
-                        }
-                    }
-                }
-            }
-        }
 
         private fun stateCurrent() {
             binding.titleCurrent.background = resources.getDrawable(R.drawable.bg_blue)
@@ -199,7 +149,7 @@ import kotlinx.coroutines.launch
             binding.titleNew.setTextColor(resources.getColor(R.color.blue))
             binding.titleFinished.setTextColor(resources.getColor(R.color.blue))
             loadLaundries(listCurrent, CURRNET)
-
+state= CURRNET
 
         }
 
@@ -211,6 +161,7 @@ import kotlinx.coroutines.launch
             binding.titleNew.setTextColor(resources.getColor(R.color.white))
             binding.titleFinished.setTextColor(resources.getColor(R.color.blue))
             loadLaundries(listNew, NEW)
+            state= NEW
             // adapter.ordersList = arrayListOf()
             //   loadLaundries(list, NEW)
         }
@@ -223,7 +174,8 @@ import kotlinx.coroutines.launch
             binding.titleNew.setTextColor(resources.getColor(R.color.blue))
             binding.titleFinished.setTextColor(resources.getColor(R.color.white))
             //  adapter.ordersList = arrayListOf()
-              loadLaundries(listPrev, FINISHED)
+            state= FINISHED
+            loadLaundries(listPrev, FINISHED)
         }
 
         private fun loadLaundries(list: ArrayList<Order>, type: Int) {
@@ -262,5 +214,61 @@ import kotlinx.coroutines.launch
 
      findNavController().navigate(R.id.orderInfoFragment)
         }
+
+
+    private fun checkLocation() {
+        if (permissionManager.hasAllLocationPermissions()) {
+            checkIfLocationEnabled()
+        } else {
+            permissionsLauncher?.launch(permissionManager.getAllLocationPermissions())
+        }
+    }
+
+
+    private val permissionsLauncher = requestAppPermissions { allIsGranted, _ ->
+        if (allIsGranted) {
+            checkIfLocationEnabled()
+        } else {
+            Toast.makeText(
+                activity, getString(R.string.not_all_permissions_accepted), Toast.LENGTH_LONG
+            ).show()
+        }
+    }
+
+
+    private fun checkIfLocationEnabled() {
+        /////////////////////////////////////////  request()
+        if (locationManager.isLocationEnabled()) {
+
+            request()
+
+
+        } else {
+            Log.d("location", "NoisLocationEnabled")
+            activity?.let {
+                locationManager.showAlertDialogButtonClicked(
+                    it, locationSettingLauncher
+                )
+            }
+        }
+    }
+
+    private fun request() {
+        locationManager.getLastKnownLocation { location ->
+            //  binding.lytData.isVisible = true
+         //   lat = location.latitude
+        //    lang = location.longitude
+            location.latitude?.let {
+
+ mViewModel.getNewOrders(it.toString(),   location.longitude.toString())
+             }
+        }
+
+
+    }
+
+    private val locationSettingLauncher = openLocationSettingsResultLauncher {
+        checkIfLocationEnabled()
+    }
 
     }

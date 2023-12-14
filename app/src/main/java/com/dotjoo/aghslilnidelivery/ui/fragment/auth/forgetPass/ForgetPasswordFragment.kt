@@ -25,8 +25,7 @@ class ForgetPasswordFragment : BaseFragment<FragmentForgetPasswordBinding>() {
     var state = 1
 
     private val mViewModel: AuthViewModel by viewModels()
-    //var countryCode = "+20"
-    override fun onFragmentReady() {
+     override fun onFragmentReady() {
         state1()
         onClick()
         mViewModel.apply {

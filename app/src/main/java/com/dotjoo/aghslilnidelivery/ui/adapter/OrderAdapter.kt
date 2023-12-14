@@ -66,7 +66,7 @@ class OrderAdapter(
 
             OrderType.FINISHED -> {
                 holder.binding.tvStatus.setText(
-                    context.resources.getString(R.string.deliverd)
+                    context.resources.getString(R.string.compeleted)
                 )
                 holder.binding.tvStatus.setTextColor(context.resources.getColor(R.color.blue))
             }

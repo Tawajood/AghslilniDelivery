@@ -6,12 +6,11 @@ import android.graphics.Paint
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
-import com.dotjoo.aghslilnidelivery.ui.activity.MainActivity
-import com.dotjoo.aghslilnidelivery.R
+ import com.dotjoo.aghslilnidelivery.R
 import com.dotjoo.aghslilnidelivery.base.BaseFragment
-import com.dotjoo.aghslilnidelivery.data.PrefsHelper
-import com.dotjoo.aghslilnidelivery.databinding.FragmentRegisterBinding
+ import com.dotjoo.aghslilnidelivery.databinding.FragmentRegisterBinding
 import com.dotjoo.aghslilnidelivery.ui.activity.AuthActivity
 import com.dotjoo.aghslilnidelivery.ui.fragment.auth.login.AuthAction
 import com.dotjoo.aghslilnidelivery.ui.fragment.auth.login.AuthViewModel
@@ -20,8 +19,7 @@ import com.dotjoo.aghslilnidelivery.util.PermissionManager
 import com.dotjoo.aghslilnidelivery.util.ToastUtils
 import com.dotjoo.aghslilnidelivery.util.ext.hideKeyboard
 import com.dotjoo.aghslilnidelivery.util.ext.loadImage
-import com.dotjoo.aghslilnidelivery.util.ext.showActivity
-import com.dotjoo.aghslilnidelivery.util.observe
+ import com.dotjoo.aghslilnidelivery.util.observe
 import com.theartofdev.edmodo.cropper.CropImage
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.toolbar.view.iv_back
@@ -62,12 +60,15 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
 
             is AuthAction.RegisterSucess -> {
                 showProgress(false)
-                //  action.data.client?.social= action.social
-                PrefsHelper.saveUserData(action.data)
-                PrefsHelper.saveToken(action.data.token)
-                goHome()
+                findNavController().navigate(R.id.waitingActivationFragment)
+                findNavController().navigate(R.id.waitingActivationFragment,   null,
+                    NavOptions.Builder().setPopUpTo(R.id.loginFragment, true).build()
+                )}
+            //  action.data.client?.social= action.social
+              //  PrefsHelper.saveUserData(action.data)
+             //   PrefsHelper.saveToken(action.data.token)
 
-            }
+
 
 
             is AuthAction.ShowFailureMsg -> action.message?.let {
@@ -91,10 +92,13 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
         parent = requireActivity() as AuthActivity
         binding.toolbar.tv_title.setText(resources.getString(R.string.new_user))
         binding.tvTermsandcondito.setPaintFlags(binding.tvTermsandcondito.getPaintFlags() or Paint.UNDERLINE_TEXT_FLAG)
+binding.tvTermsandcondito.setOnClickListener {
+    findNavController().navigate(R.id.termsFragment2 )
 
+}
 
         binding.btnSignup.setOnClickListener {
-            if (file_id==null || file_car_lisence==null||file_driver_lis==null){
+             if (file_id==null || file_car_lisence==null||file_driver_lis==null){
                 ToastUtils.showToast(requireContext(),
                     getString(R.string.please_attach_the_car_papers_and_license))
             }else{
@@ -135,9 +139,12 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
     }
 
     fun goHome() {
-        showActivity(MainActivity::class.java, clearAllStack = true)
-
+      findNavController().navigate(
+            R.id.loginFragment,
+            null,
+            NavOptions.Builder().setPopUpTo(R.id.loginFragment, true).build())
     }
+
 
 
     private val pickMedia =

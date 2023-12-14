@@ -19,14 +19,18 @@
         android:name="com.dotjoo.aghslilnidelivery.ui.fragment.auth.register.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" />
-    <fragment
-        android:id="@+id/walkThroughFragment"
-        android:name="com.dotjoo.aghslilnidelivery.ui.fragment.auth.walkThrough.WalkThroughFragment"
-        android:label="fragment_walk_through"
-        tools:layout="@layout/fragment_walk_through" />
+
     <fragment
         android:id="@+id/forgetPasswordFragment"
         android:name="com.dotjoo.aghslilnidelivery.ui.fragment.auth.forgetPass.ForgetPasswordFragment"
         android:label="fragment_forget_password"
         tools:layout="@layout/fragment_forget_password" />
+    <fragment
+        android:id="@+id/termsFragment2"
+        android:name="com.dotjoo.aghslilnidelivery.ui.fragment.main.moreFragments.TermsFragment"
+        android:label="TermsFragment" />
+    <fragment
+        android:id="@+id/waitingActivationFragment"
+        android:name="com.dotjoo.aghslilnidelivery.ui.fragment.auth.register.WaitingActivationFragment"
+        android:label="WaitingActivationFragment" />
 </navigation>

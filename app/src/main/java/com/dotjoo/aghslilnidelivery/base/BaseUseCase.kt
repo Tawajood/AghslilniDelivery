@@ -21,8 +21,6 @@ abstract class BaseUseCase<RequestType : BaseResponse, params : Any> :
                         ) {
                             if(it.body.status==false){
                             showFailureMessage(onResult, it.body.message )
-                          //      onResult.invoke(Resource.success(it.body))
-
                             }else{
 
                                 onResult.invoke(Resource.success(it.body))

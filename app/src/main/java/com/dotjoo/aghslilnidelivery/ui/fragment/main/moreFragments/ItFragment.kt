@@ -5,10 +5,12 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.dotjoo.aghslilnidelivery.R
 import com.dotjoo.aghslilnidelivery.base.BaseFragment
+import com.dotjoo.aghslilnidelivery.data.PrefsHelper
 import com.dotjoo.aghslilnidelivery.data.response.Message
 import com.dotjoo.aghslilnidelivery.databinding.FragmentItBinding
 import com.dotjoo.aghslilnidelivery.ui.activity.MainActivity
 import com.dotjoo.aghslilnidelivery.ui.adapter.MessagesAdapter
+import com.dotjoo.aghslilnidelivery.util.Constants.EN
 import com.dotjoo.aghslilnidelivery.util.ext.hideKeyboard
 import com.dotjoo.aghslilnidelivery.util.observe
 import dagger.hilt.android.AndroidEntryPoint
@@ -75,6 +77,8 @@ class ItFragment : BaseFragment<FragmentItBinding>() {
         parent = requireActivity() as MainActivity
         parent.showBottomNav(false)
         binding.messagesRv.adapter = adapter
+        if(PrefsHelper.getLanguage()==EN)binding.sendImg.rotation=90f
+        else binding.sendImg.rotation=270f
         binding.cardClose.setOnClickListener {
             findNavController().navigateUp()
         }

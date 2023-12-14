@@ -1,8 +1,8 @@
 package com.dotjoo.aghslilnidelivery.ui.fragment.main.profile
 
 
-import androidx.core.os.bundleOf
-import androidx.fragment.app.activityViewModels
+ import androidx.core.view.isVisible
+ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.dotjoo.aghslilnidelivery.R
 import com.dotjoo.aghslilnidelivery.base.BaseFragment
@@ -17,7 +17,6 @@ import com.dotjoo.aghslilnidelivery.util.ext.loadImage
 import com.dotjoo.aghslilnidelivery.util.observe
  import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
-
 
 @AndroidEntryPoint
 class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
@@ -84,10 +83,10 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
     private fun setupProfile(profile: Profile) {
         profile?.let {
             binding.etName.setText(it.name)
-            binding.ivProfile.loadImage(it.img)
+            binding.ivProfile.loadImage(it.img, isCircular = true)
             binding.etPhone.setText(it.phone)
             binding.ccp.setCountryForPhoneCode(profile.country_code.replace("+", "").toInt())
-        }
+     binding.lytData.isVisible= true   }
     }
 
 

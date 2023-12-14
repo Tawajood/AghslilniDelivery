@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AghslilniDelivery</string>
+    <string name="app_name">AghslilniDe</string>
     <string name="retry">أعد المحاولة</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="skip">تخطى</string>
@@ -127,4 +127,11 @@
     <string name="items">قطع</string>
     <string name="welcome">يا هلا فيك !</string>
     <string name="please_attach_the_car_papers_and_license">من فضلك ارفق اوراق السيارة والرخصة</string>
+    <string name="msg_empty_amount">برجاء إدخال المبلغ</string>
+    <string name="msg_empty_bank_name">برجاء إدخال اسم البنك</string>
+    <string name="deliver">تسليم</string>
+
+    <string name="empty_account_number">برجاء إدخال رقم الحساب</string>
+    <string name="dear">عزيزى العميل </string>
+    <string name="request_has_been_sent">سوف يتم تفعيل حسابك بعد مراجعة البيانات من قبل التطبيق</string>
 </resources>

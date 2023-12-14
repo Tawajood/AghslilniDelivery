@@ -28,11 +28,6 @@ interface ApiInterface {
         @Field("password") password: String
     ): NetworkResponse<DevResponse<LoginResponse>, ErrorResponse>
 
-    @POST("api/update/fcmToken")
-    @FormUrlEncoded
-    suspend fun updateFcnToken(
-        @Field("device_token") device_token: String
-    ): NetworkResponse<DevResponse<LoginResponse>, ErrorResponse>
 
     @POST("driver/check/phone")
     @FormUrlEncoded
@@ -79,6 +74,12 @@ interface ApiInterface {
     @FormUrlEncoded
     suspend fun deleteAccount(
     ): NetworkResponse<DevResponse<Any>, ErrorResponse>
+  @POST("driver/update/fcmToken")
+        @FormUrlEncoded
+      suspend fun updateFcnToken(
+    @Field("device_token") device_token: String
+    ): NetworkResponse<DevResponse<Any>, ErrorResponse>
+
 
     @POST("driver/update/profile")
     @Multipart
@@ -102,7 +103,7 @@ interface ApiInterface {
         @Query("lon") lon: String,
     ): NetworkResponse<DevResponse<AlOrdersResponse>, ErrorResponse>
 
-    @GET("driver/prev/order")
+    @GET("driver/get/previous/order")
     suspend fun getPrevOrder(
     ): NetworkResponse<DevResponse<AlOrdersResponse>, ErrorResponse>
 
