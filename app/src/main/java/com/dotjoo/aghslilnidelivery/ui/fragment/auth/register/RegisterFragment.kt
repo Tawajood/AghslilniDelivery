@@ -64,9 +64,6 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
                 findNavController().navigate(R.id.waitingActivationFragment,   null,
                     NavOptions.Builder().setPopUpTo(R.id.loginFragment, true).build()
                 )}
-            //  action.data.client?.social= action.social
-              //  PrefsHelper.saveUserData(action.data)
-             //   PrefsHelper.saveToken(action.data.token)
 
 
 
