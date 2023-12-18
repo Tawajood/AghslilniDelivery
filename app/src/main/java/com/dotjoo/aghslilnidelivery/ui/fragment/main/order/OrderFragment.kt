@@ -49,6 +49,9 @@ import javax.inject.Inject
             initAdapters()
             onClick()
 
+        mViewModel.getPrevOrder()
+        mViewModel.getCurrentOrder()
+        checkLocation()
 
             mViewModel.apply {
                  observe(viewState) {
@@ -57,9 +60,9 @@ import javax.inject.Inject
 
             }
             binding.swiperefreshHome.setOnRefreshListener {
-                mViewModel.getCurrentOrder()
-                mViewModel.getPrevOrder()
-                mViewModel.getNewOrders("29.8494216","31.3441353"  )
+              if(state== NEW)  checkLocation()
+          else   if(state== FINISHED)      mViewModel.getPrevOrder()
+        else        mViewModel.getCurrentOrder( )
                  //mViewModel.getAllLaundries(lat,lang)
                 if (binding.swiperefreshHome != null) binding.swiperefreshHome.isRefreshing = false
             }
@@ -261,6 +264,7 @@ state= CURRNET
             location.latitude?.let {
 
  mViewModel.getNewOrders(it.toString(),   location.longitude.toString())
+
              }
         }
 

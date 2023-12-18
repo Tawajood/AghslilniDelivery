@@ -22,6 +22,7 @@ import com.dotjoo.aghslilnidelivery.util.ext.loadImage
  import com.dotjoo.aghslilnidelivery.util.observe
 import com.theartofdev.edmodo.cropper.CropImage
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.toolbar.view.card_back
 import kotlinx.android.synthetic.main.toolbar.view.iv_back
 import kotlinx.android.synthetic.main.toolbar.view.tv_title
 import java.io.File
@@ -42,11 +43,18 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
     lateinit var permissionManager: PermissionManager
     override fun onFragmentReady() {
         onClick()
+        loadImages()
         mViewModel.apply {
             observe(viewState) {
                 handleViewState(it)
             }
         }
+    }
+
+    private fun loadImages() {
+        file_id?.let { binding.ivId.loadImage( it, isCircular = true) }
+        file_driver_lis?.let { binding.ivDrivingLisence.loadImage( it, isCircular = true) }
+        file_car_lisence?.let { binding.ivCarLisence.loadImage( it, isCircular = true) }
     }
 
     private fun handleViewState(action: AuthAction) {
@@ -115,9 +123,8 @@ binding.tvTermsandcondito.setOnClickListener {
 
         }
 
-        binding.toolbar.iv_back.setOnClickListener {
-            activity?.finish()
-        }
+        binding.toolbar.card_back.setOnClickListener {
+findNavController().navigateUp()        }
         binding.cardImgCarLisence.setOnClickListener {
             type = 0
             pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))

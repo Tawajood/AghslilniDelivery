@@ -32,12 +32,13 @@ class TermsFragment   : BaseFragment<FragmentTermsBinding>() {
      try {
          parent = requireActivity() as MainActivity
          parent.showBottomNav(false)
-         binding.toolbar.card_back.setOnClickListener {
-             findNavController().navigateUp()
-         }
+
      }  catch (e:Exception){
 
      }
+        binding.toolbar.card_back.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
     fun handleViewState(action: SettingAction) {
         when (action) {

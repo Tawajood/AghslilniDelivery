@@ -83,6 +83,7 @@ data class OrderInfo(
     @SerializedName("address"      ) var address     : String?              = null,
     @SerializedName("customer_phone"      ) var phone     : String?              = null,
     @SerializedName("total"         ) var total        : String?              = null,
+    @SerializedName("additional_cost"         ) var additional_cost        : String?              = null,
     @SerializedName("customer_name" ) var customerName : String?           = null,
     @SerializedName("lat"           ) var lat          : String?           = null,
     @SerializedName("lon"           ) var lon          : String?              = null,

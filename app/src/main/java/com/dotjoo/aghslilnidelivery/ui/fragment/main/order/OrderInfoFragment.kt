@@ -105,6 +105,7 @@ class OrderInfoFragment : BaseFragment<FragmentOrderInfoBinding>() {
       //      binding.tvClientName.setText(it.order?.customerName)
         binding.tvSubTotalValue.setText(it?.totalItemsPrice + " " + resources.getString(R.string.sr))
             binding.tvTotalValue.setText(it.order?.total + " " + resources.getString(R.string.sr))
+            binding.tvAddValue.setText(it.order?.additional_cost + " " + resources.getString(R.string.sr))
             binding.tvTaxValue.setText(it.order?.tax + " " + resources.getString(R.string.sr))
             binding.tvUrgent.isVisible = (it.order?.argent == 1)
             handleStatus(it.order?.progress)

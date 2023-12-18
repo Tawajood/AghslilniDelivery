@@ -46,9 +46,7 @@ class OrderViewModel
     val new = _newOrders.asStateFlow()
 var orderId:String? =null
     init {
-         getNewOrders("29.8494216","31.3441353"  )
-        getCurrentOrder()
-        getPrevOrder()
+
         updateToken()
      }
 

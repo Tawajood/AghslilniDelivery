@@ -134,4 +134,5 @@
     <string name="empty_account_number">Please enter the account number</string>
     <string name="dear">Dear ...</string>
     <string name="request_has_been_sent">Your account will be activated after reviewing the data by the application</string>
+    <string name="additional_cost">Additional Cost</string>
 </resources>

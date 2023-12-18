@@ -65,8 +65,7 @@
                     android:hint="@string/phone_number"
                     android:minHeight="@dimen/_40sdp"
                     android:paddingHorizontal="@dimen/_10sdp"
-                    android:text="01014324322"
-                    android:textColor="@color/grey_dark1"
+                     android:textColor="@color/grey_dark1"
                     android:textColorHint="@color/light_grey1"
                     android:textSize="@dimen/_13sdp"
                     android:inputType="number"
@@ -135,8 +134,7 @@
                         android:minHeight="@dimen/_40sdp"
                         android:paddingHorizontal="@dimen/_12sdp"
                         android:paddingVertical="@dimen/_5sdp"
-                        android:text="123456"
-                        android:textAlignment="viewStart"
+                         android:textAlignment="viewStart"
                         android:textColorHint="@color/light_grey1"
 
                         android:textSize="@dimen/_14sdp" />

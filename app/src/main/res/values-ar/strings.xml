@@ -134,4 +134,5 @@
     <string name="empty_account_number">برجاء إدخال رقم الحساب</string>
     <string name="dear">عزيزى العميل </string>
     <string name="request_has_been_sent">سوف يتم تفعيل حسابك بعد مراجعة البيانات من قبل التطبيق</string>
+    <string name="additional_cost">التكلفه الاضافية</string>
 </resources>
