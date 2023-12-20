@@ -26,6 +26,7 @@ class Repository @Inject constructor(
         param.file_driver_lis?.toMultiPart("driveing_licence"),
         param.file_car_lisence?.toMultiPart("car_form"),
         param.file_id?.toMultiPart("national_id"),
+        param.file_profile_img?.toMultiPart("img"),
         )
 
   suspend fun updateFcnToken(param: FcmParam) =
@@ -33,6 +34,8 @@ class Repository @Inject constructor(
 
     suspend fun changePassword(param: ChangPasswordParam) =
         api.changePassword(param.pass, param.new_pass, param.new_pass_confirm)
+ suspend fun changePhone(param: CheckPhoneParam) =
+        api.changePhone(param.countryCode, param.phone )
 
     //  suspend fun logout() = api.logout()
     suspend fun deleteAccount() = api.deleteAccount()

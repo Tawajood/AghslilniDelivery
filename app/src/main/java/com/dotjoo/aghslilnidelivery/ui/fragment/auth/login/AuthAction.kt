@@ -1,6 +1,7 @@
 package com.dotjoo.aghslilnidelivery.ui.fragment.auth.login
 
 import com.dotjoo.aghslilnidelivery.base.Action
+import com.dotjoo.aghslilnidelivery.data.param.RegisterParams
 import com.dotjoo.aghslilnidelivery.data.response.LoginResponse
 
 sealed class AuthAction() : Action {
@@ -9,6 +10,7 @@ sealed class AuthAction() : Action {
     data class ShowFailureMsg(val message: String?) : AuthAction()
      data  class OtpSuccess(val message: String) : AuthAction()
      data  class RegisterSucess(val data: LoginResponse) : AuthAction()
+     data  class ShowRegisterVaildationSucess(val param: RegisterParams) : AuthAction()
      data  class PhoneChecked(val message: String) : AuthAction()
      data  class OtpChecked(val message: String) : AuthAction()
      data  class ResetPasswordSucess(val message: String) : AuthAction()

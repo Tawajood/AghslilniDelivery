@@ -59,7 +59,8 @@ interface ApiInterface {
         @PartMap updateMap: Map<String, RequestBody>,
         @Part image: MultipartBody.Part?,
         @Part image2: MultipartBody.Part?,
-        @Part image3: MultipartBody.Part?
+        @Part image3: MultipartBody.Part?,
+        @Part image4: MultipartBody.Part?
     ): NetworkResponse<DevResponse<LoginResponse>, ErrorResponse>
 
     @POST("driver/change/password")
@@ -68,6 +69,12 @@ interface ApiInterface {
         @Field("old_password") old_password: String,
         @Field("password") password: String,
         @Field("password_confirmation") password_confirmation: String,
+    ): NetworkResponse<DevResponse<Any>, ErrorResponse>
+  @POST("driver/change/phone")
+    @FormUrlEncoded
+    suspend fun changePhone(
+      @Field("country_code") country_code: String,
+      @Field("phone") phone: String,
     ): NetworkResponse<DevResponse<Any>, ErrorResponse>
 
     @POST("driver/delete/account")

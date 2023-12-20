@@ -18,6 +18,8 @@ import com.dotjoo.aghslilnidelivery.data.param.UpdateProfileParam
 import com.dotjoo.aghslilnidelivery.data.response.Profile
 import com.dotjoo.aghslilnidelivery.databinding.FragmentEditProfileBinding
 import com.dotjoo.aghslilnidelivery.ui.activity.MainActivity
+import com.dotjoo.aghslilnidelivery.ui.dialog.CheckOtpSheetFragment
+import com.dotjoo.aghslilnidelivery.ui.dialog.OnPhoneCheckedWithOtp
 import com.dotjoo.aghslilnidelivery.util.FileManager
 import com.dotjoo.aghslilnidelivery.util.ext.hideKeyboard
 import com.dotjoo.aghslilnidelivery.util.ext.loadImage
@@ -31,7 +33,8 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>() {
     var logo: File? = null
     val mViewModel: AccountViewModel by activityViewModels()
     lateinit var parent: MainActivity
-
+    var countryCode = ""
+    var updatPhoneFlag =-1
     override fun onFragmentReady() {
         mViewModel.apply {
             getProfileData()
@@ -92,7 +95,30 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>() {
                 action.msg?.let { showToast(it) }
                 findNavController().popBackStack()
             }
+            is AccountAction.ShowPhoneUpdated -> {
+                action?.msg?.let {
+                    showToast(it)
+                }
+                mViewModel.getProfileData()
+            }
+            is AccountAction.ProfileUpdated -> {
+                action?.msg?.let {
+                    showToast(it)
+                }
+                if(updatPhoneFlag ==1) {
+                    CheckOtpSheetFragment.newInstance(countryCode, binding.etPhone.text.toString(), object :
+                        OnPhoneCheckedWithOtp {
+                        override fun onClick(
+                            country_code: String,
+                            phone: String,
+                            verifed: Boolean
+                        ) {
+                            mViewModel.changePhone(  country_code, phone)                     }
 
+
+                    }).show(childFragmentManager, "CheckOtpSheetFragment")
+                }
+            }
 
             else -> {
 

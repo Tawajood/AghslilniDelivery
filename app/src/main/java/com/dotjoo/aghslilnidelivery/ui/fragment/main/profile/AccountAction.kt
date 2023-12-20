@@ -15,10 +15,7 @@ sealed class AccountAction : Action {
 
   data class  ShowProfile(val data : ProfileResponse): AccountAction ()
   data class  ProfileUpdated(val msg : String): AccountAction ()
-   data class  ShowItems(val data : ItemsInServiceResponse): AccountAction ()
-   data class  ShowServices(val data : ServiceResponse): AccountAction ()
-    data class ShowItemsStored(val msg : String ) : AccountAction()
-    data class ShowItemUpdated(val msg : String ) : AccountAction()
+  data class  ShowPhoneUpdated(val msg : String): AccountAction ()
     data class ChangePassword(val msg : String ) : AccountAction()
     data class AccountDeleted(val msg : String ) : AccountAction()
 }

@@ -11,6 +11,7 @@ import com.dotjoo.aghslilnidelivery.data.response.ServiceInLaundry
   import com.dotjoo.aghslilnidelivery.util.NetworkConnectivity
 import com.dotjoo.aghslilnidelivery.util.Resource
 import com.dotjoo.aghslilnidelivery.base.BaseViewModel
+import com.dotjoo.aghslilnidelivery.data.param.CheckPhoneParam
 import com.dotjoo.aghslilnidelivery.data.param.UpdateProfileParam
 import com.dotjoo.aghslilnidelivery.data.response.ProfileResponse
 import com.dotjoo.aghslilnidelivery.domain.AccountUseCase
@@ -138,6 +139,30 @@ class AccountViewModel
                         is Resource.Success -> {
 
                             produce(AccountAction.AccountDeleted(res.data?.message as String))
+                        }
+                    }
+                }
+            }
+        } else {
+            produce(AccountAction.ShowFailureMsg(getString(R.string.no_internet)))
+        }
+    }
+  fun changePhone(     country_code: String,
+                       phone: String,) {
+        if (app.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) } == true) {
+            produce(AccountAction.ShowLoading(true))
+
+            viewModelScope.launch {
+                var res = useCase.invoke(
+                    viewModelScope , CheckPhoneParam(    country_code ,
+                      phone  ,)
+                ) { res ->
+                    when (res) {
+                        is Resource.Failure -> produce(AccountAction.ShowFailureMsg(res.message.toString()))
+                        is Resource.Progress -> produce(AccountAction.ShowLoading(res.loading))
+                        is Resource.Success -> {
+
+                            produce(AccountAction.ShowPhoneUpdated(res.data?.message as String))
                         }
                     }
                 }

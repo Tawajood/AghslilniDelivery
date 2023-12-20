@@ -39,7 +39,12 @@
     <string name="change_pass">change password</string>
     <string name="no_internet">There is no internet connection</string>
     <string name="empty_name_msg">Please Enter your name</string>
-    <string name="msg_empty_phone_number">Please enter your Name</string>
+
+    <string name="msg_empty_file_car_lisence">Please Upload your Car Lisence</string>
+    <string name="msg_empty_file_driver_lis">Please Upload your Driver lisence</string>
+    <string name="msg_empty_file_id">Please upload your Id</string>
+    <string name="msg_empty_file_profile_img">Please upload  your Profile Picture</string>
+    <string name="msg_empty_phone_number">Please enter your Phone Number </string>
     <string name="msg_empty_password">Please enter your password</string>
     <string name="empty_confirm_password">Please confirm your password</string>
     <string name="both_passwords_must_match">Passwords don\'t match</string>
@@ -135,4 +140,6 @@
     <string name="dear">Dear ...</string>
     <string name="request_has_been_sent">Your account will be activated after reviewing the data by the application</string>
     <string name="additional_cost">Additional Cost</string>
+    <string name="profiile_img">Profile image</string>
+    <string name="wrongotp">Wrong OTP</string>
 </resources>

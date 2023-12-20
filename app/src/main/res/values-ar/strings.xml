@@ -39,7 +39,13 @@
     <string name="change_pass">تغيير كلمة المرور</string>
     <string name="no_internet">لا يوجد إتصال بالانترنت</string>
     <string name="empty_name_msg">من فضلك أدخل إسمك</string>
-    <string name="msg_empty_phone_number">من فضلك أدخل إسمك</string>
+    <string name="msg_empty_phone_number">من فضلك أدخل رقمك</string>
+
+    <string name="msg_empty_file_car_lisence">برجاء رفع صورة رخصه السيارة</string>
+    <string name="msg_empty_file_driver_lis">برجاء رفع صورة رخصه القيادة</string>
+    <string name="msg_empty_file_id">برجاء رفع صوره بطاقة الهوية </string>
+    <string name="msg_empty_file_profile_img">برجاؤ رفع الصورة الشخصيه </string>
+
     <string name="msg_empty_password">من فضلك أدخل رقمك السري</string>
     <string name="empty_confirm_password">يرجى التأكد من صحة كلمة المرور الخاصة بك</string>
     <string name="both_passwords_must_match">كلمات المرور غير متطابقة</string>
@@ -48,6 +54,7 @@
     <string name="msg_empty_address">الرجاء إدخال عنوانك</string>
     <string name="done">تم</string>
     <string name="not_all_permissions_accepted">لم يتم قبول جميع الأذونات</string>
+    <string name="profiile_img">صورة شخصية</string>
 
     <string name="msg_empty_new_password">برجاء إدخال كلمة المرور</string>
     <string name="msg_empty_otp">الرجاء إدخال كلمة المرور لمرة واحدة (OTP) الخاصة بك</string>
@@ -135,4 +142,5 @@
     <string name="dear">عزيزى العميل </string>
     <string name="request_has_been_sent">سوف يتم تفعيل حسابك بعد مراجعة البيانات من قبل التطبيق</string>
     <string name="additional_cost">التكلفه الاضافية</string>
+    <string name="wrongotp">Wrong OTP</string>
 </resources>

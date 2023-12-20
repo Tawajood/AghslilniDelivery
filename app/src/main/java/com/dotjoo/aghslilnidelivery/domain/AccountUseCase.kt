@@ -6,6 +6,7 @@ import com.dotjoo.aghslilnidelivery.base.ErrorResponse
 import com.dotjoo.aghslilnidelivery.base.NetworkResponse
   import com.dotjoo.aghslilnidelivery.data.Repository
  import com.dotjoo.aghslilnidelivery.data.param.ChangPasswordParam
+ import com.dotjoo.aghslilnidelivery.data.param.CheckPhoneParam
  import com.dotjoo.aghslilnidelivery.data.param.UpdateProfileParam
  import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.Flow
@@ -25,6 +26,10 @@ class AccountUseCase @Inject constructor(private val repository: Repository):
              } else if (params == 1){
                  flow {
                      emit(repository.getProfile())
+                 } as Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>>
+             } else if (params is CheckPhoneParam){
+                 flow {
+                     emit(repository.changePhone(params))
                  } as Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>>
              }else if (params is UpdateProfileParam){
                  flow {

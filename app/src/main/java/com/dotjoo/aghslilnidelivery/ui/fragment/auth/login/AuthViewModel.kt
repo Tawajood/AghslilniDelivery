@@ -24,7 +24,7 @@ import javax.inject.Inject
 @HiltViewModel
 class AuthViewModel @Inject constructor(app: Application, val authUserCase: AuthUseCase) :
     BaseViewModel<AuthAction>(app) {
-    var email: String? = null
+    var phone: String? = null
     var otp: String? = null
    // var registerParam: RegisterParams? = null
     var emailVerified =""
@@ -47,7 +47,7 @@ fun isValidParamsChangePass(countryCode: String,    newpass: String, confirmpass
         false
 
     } else
-        email?.let { resetPass(countryCode,it, otp.toString(), confirmpass) }
+        phone?.let { resetPass(countryCode,it, otp.toString(), confirmpass) }
 
 }
 
@@ -103,7 +103,7 @@ fun isValidParamsChangePass(countryCode: String,    newpass: String, confirmpass
     }
 
     fun isVaildRegisteration(
-        name: String?, country_code: String?, phone: String?,    file_car_lisence: File? ,file_driver_lis: File? ,file_id: File? , pass: String?, repeated_pass: String?
+        name: String?, country_code: String?, phone: String?,    file_car_lisence: File? ,file_driver_lis: File? ,file_id: File? , file_profile_img: File? , pass: String?, repeated_pass: String?
     ) {
         if (name.isNullOrBlank()) {
             produce(AuthAction.ShowFailureMsg(getString(R.string.empty_name_msg)))
@@ -114,16 +114,24 @@ fun isValidParamsChangePass(countryCode: String,    newpass: String, confirmpass
         } else if (phone.isNullOrBlank()) {
             produce(AuthAction.ShowFailureMsg(getString(R.string.msg_empty_phone_number)))
             false
-        } /*else if (lat.isNullOrBlank()) {
-            produce(AuthAction.ShowFailureMsg(getString(R.string.msg_empty_lat)))
+        }  else if (file_car_lisence== null) {
+            produce(AuthAction.ShowFailureMsg(getString(R.string.msg_empty_file_car_lisence)))
             false
-        } else if (lon.isNullOrBlank()) {
-            produce(AuthAction.ShowFailureMsg(getString(R.string.msg_empty_lat)))
+        }
+         else if (file_driver_lis== null) {
+            produce(AuthAction.ShowFailureMsg(getString(R.string.msg_empty_file_driver_lis)))
             false
-        } else if (address.isNullOrBlank()) {
-            produce(AuthAction.ShowFailureMsg(getString(R.string.msg_empty_address)))
+        }
+         else if (file_id== null) {
+            produce(AuthAction.ShowFailureMsg(getString(R.string.msg_empty_file_id)))
             false
-        }*/ else if (pass.isNullOrBlank()) {
+        }
+         else if (file_profile_img== null) {
+            produce(AuthAction.ShowFailureMsg(getString(R.string.msg_empty_file_profile_img)))
+            false
+        }
+
+        else if (pass.isNullOrBlank()) {
             produce(AuthAction.ShowFailureMsg(getString(R.string.msg_empty_password)))
             false
         } else if (repeated_pass.isNullOrBlank()) {
@@ -134,21 +142,29 @@ fun isValidParamsChangePass(countryCode: String,    newpass: String, confirmpass
             false
         } else {
             //  if(emailVerified == email ) {
-            register(
-                RegisterParams(
-                    name,
-                    country_code, phone,    file_car_lisence,file_driver_lis,file_id,
-                    pass, repeated_pass
+            produce(
+                AuthAction.ShowRegisterVaildationSucess(
+                    RegisterParams(
+                        name,
+                        country_code,
+                        phone,
+                        file_car_lisence,
+                        file_driver_lis,
+                        file_id,
+                        file_profile_img,
+                        pass,
+                        repeated_pass
+                    )
                 )
             )
+
+            //    else {
+            //       register(email)
+            //    }
+
+
+            true
         }
-        //    else {
-        //       register(email)
-        //    }
-
-
-        true
-
         //  }
     }
 
@@ -193,6 +209,8 @@ fun isValidParamsChangePass(countryCode: String,    newpass: String, confirmpass
                         is Resource.Failure -> produce(AuthAction.ShowFailureMsg(res.message.toString()))
                         is Resource.Progress -> produce(AuthAction.ShowLoading(res.loading))
                         is Resource.Success -> {
+                 this
+                            this@AuthViewModel.phone= phone
                             produce(AuthAction.PhoneChecked(res.data?.message as String))
                         }
                     }

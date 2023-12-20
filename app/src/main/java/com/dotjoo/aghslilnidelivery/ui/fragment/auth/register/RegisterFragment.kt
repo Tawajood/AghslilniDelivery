@@ -8,10 +8,12 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
- import com.dotjoo.aghslilnidelivery.R
+import com.dotjoo.aghslilnidelivery.R
 import com.dotjoo.aghslilnidelivery.base.BaseFragment
- import com.dotjoo.aghslilnidelivery.databinding.FragmentRegisterBinding
+import com.dotjoo.aghslilnidelivery.databinding.FragmentRegisterBinding
 import com.dotjoo.aghslilnidelivery.ui.activity.AuthActivity
+import com.dotjoo.aghslilnidelivery.ui.dialog.CheckOtpSheetFragment
+import com.dotjoo.aghslilnidelivery.ui.dialog.OnPhoneCheckedWithOtp
 import com.dotjoo.aghslilnidelivery.ui.fragment.auth.login.AuthAction
 import com.dotjoo.aghslilnidelivery.ui.fragment.auth.login.AuthViewModel
 import com.dotjoo.aghslilnidelivery.util.FileManager
@@ -19,7 +21,7 @@ import com.dotjoo.aghslilnidelivery.util.PermissionManager
 import com.dotjoo.aghslilnidelivery.util.ToastUtils
 import com.dotjoo.aghslilnidelivery.util.ext.hideKeyboard
 import com.dotjoo.aghslilnidelivery.util.ext.loadImage
- import com.dotjoo.aghslilnidelivery.util.observe
+import com.dotjoo.aghslilnidelivery.util.observe
 import com.theartofdev.edmodo.cropper.CropImage
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.toolbar.view.card_back
@@ -33,11 +35,12 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
     private var type: Int = -1
     lateinit var parent: AuthActivity
     private val mViewModel: AuthViewModel by viewModels()
-
-    //var countryCode = "+20"
+    var verified_countryCode = ""
+    var verified_phone: String? = null
     var file_id: File? = null
     var file_driver_lis: File? = null
     var file_car_lisence: File? = null
+    var file_profile_img: File? = null
 
     @Inject
     lateinit var permissionManager: PermissionManager
@@ -52,9 +55,10 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
     }
 
     private fun loadImages() {
-        file_id?.let { binding.ivId.loadImage( it, isCircular = true) }
-        file_driver_lis?.let { binding.ivDrivingLisence.loadImage( it, isCircular = true) }
-        file_car_lisence?.let { binding.ivCarLisence.loadImage( it, isCircular = true) }
+        file_id?.let { binding.ivId.loadImage(it, isCircular = true) }
+        file_driver_lis?.let { binding.ivDrivingLisence.loadImage(it, isCircular = true) }
+        file_car_lisence?.let { binding.ivCarLisence.loadImage(it, isCircular = true) }
+        file_profile_img?.let { binding.ivProfileImg.loadImage(it, isCircular = true) }
     }
 
     private fun handleViewState(action: AuthAction) {
@@ -69,12 +73,49 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
             is AuthAction.RegisterSucess -> {
                 showProgress(false)
                 findNavController().navigate(R.id.waitingActivationFragment)
-                findNavController().navigate(R.id.waitingActivationFragment,   null,
+                findNavController().navigate(
+                    R.id.waitingActivationFragment, null,
                     NavOptions.Builder().setPopUpTo(R.id.loginFragment, true).build()
-                )}
+                )
+            }
 
+            is AuthAction.ShowRegisterVaildationSucess -> {
+                showProgress(false)
+                if (verified_phone.isNullOrEmpty() || verified_phone == null) {
+                    CheckOtpSheetFragment.newInstance(action.param.country_code,
+                        action.param.phone,
+                        object : OnPhoneCheckedWithOtp {
+                            override fun onClick(
+                                country_code: String, phone: String, verifed: Boolean
+                            ) {
+                                verified_phone = phone
+                                verified_countryCode = country_code
+                                mViewModel.register(action.param)
+                            }
+                        }).show(
+                        childFragmentManager, "CheckOtpSheetFragment"
+                    )
 
-
+                } else {
+                    if (verified_phone == action.param.phone && verified_countryCode == action.param.country_code) {
+                        mViewModel.register(action.param)
+                    } else {
+                        CheckOtpSheetFragment.newInstance(action.param.country_code,
+                            action.param.phone,
+                            object : OnPhoneCheckedWithOtp {
+                                override fun onClick(
+                                    country_code: String, phone: String, verifed: Boolean
+                                ) {
+                                    verified_phone = phone
+                                    verified_countryCode = country_code
+                                    mViewModel.register(action.param)
+                                }
+                            }).show(
+                            childFragmentManager, "CheckOtpSheetFragment"
+                        )
+                    }
+                }
+            }
 
             is AuthAction.ShowFailureMsg -> action.message?.let {
                 if (it.contains("401") == true) {
@@ -83,11 +124,9 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
                     showToast(action.message)
                 }
                 showProgress(false)
-
             }
 
             else -> {
-
             }
         }
     }
@@ -97,21 +136,23 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
         parent = requireActivity() as AuthActivity
         binding.toolbar.tv_title.setText(resources.getString(R.string.new_user))
         binding.tvTermsandcondito.setPaintFlags(binding.tvTermsandcondito.getPaintFlags() or Paint.UNDERLINE_TEXT_FLAG)
-binding.tvTermsandcondito.setOnClickListener {
-    findNavController().navigate(R.id.termsFragment2 )
+        binding.tvTermsandcondito.setOnClickListener {
+            findNavController().navigate(R.id.termsFragment2)
 
-}
+        }
 
         binding.btnSignup.setOnClickListener {
-             if (file_id==null || file_car_lisence==null||file_driver_lis==null){
-                ToastUtils.showToast(requireContext(),
-                    getString(R.string.please_attach_the_car_papers_and_license))
-            }else{
+            if (file_id == null || file_car_lisence == null || file_driver_lis == null) {
+                ToastUtils.showToast(
+                    requireContext(),
+                    getString(R.string.please_attach_the_car_papers_and_license)
+                )
+            } else {
                 mViewModel.isVaildRegisteration(
                     binding.etName.text.toString(),
                     "+${binding.ccp.selectedCountryCode}",
                     binding.etPhone.text.toString(),
-                    file_car_lisence, file_driver_lis, file_id,
+                    file_car_lisence, file_driver_lis, file_id, file_profile_img,
                     binding.etPassword.text.toString(),
                     binding.etPasswordConfim.text.toString(),
                 )
@@ -124,7 +165,9 @@ binding.tvTermsandcondito.setOnClickListener {
         }
 
         binding.toolbar.card_back.setOnClickListener {
-findNavController().navigateUp()        }
+            findNavController().navigateUp()
+        }
+
         binding.cardImgCarLisence.setOnClickListener {
             type = 0
             pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
@@ -140,13 +183,11 @@ findNavController().navigateUp()        }
             pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
 
         }
-    }
+        binding.cardProfileimg.setOnClickListener {
+            type = 3
+            pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
 
-    fun goHome() {
-      findNavController().navigate(
-            R.id.loginFragment,
-            null,
-            NavOptions.Builder().setPopUpTo(R.id.loginFragment, true).build())
+        }
     }
 
 
@@ -180,6 +221,10 @@ findNavController().navigateUp()        }
                         } else if (type == 2) {
                             binding.ivId.loadImage(file, isCircular = true)
                             file_id = file
+
+                        } else {
+                            binding.ivProfileImg.loadImage(file, isCircular = true)
+                            file_profile_img = file
 
                         }
                     }

@@ -344,6 +344,41 @@
                         android:scaleType="centerCrop"
                         android:src="@drawable/tst" />
                 </com.google.android.material.card.MaterialCardView>
+          <TextView
+                    android:id="@+id/tx3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:drawableStart="@drawable/gallery_with_card"
+                    android:drawablePadding="@dimen/_6sdp"
+                    android:gravity="center_vertical"
+                    android:text="@string/profiile_img"
+                    android:textColor="@color/grey_dark"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold"
+               app:layout_constraintEnd_toEndOf="parent"    app:layout_constraintStart_toEndOf="@id/guideline"
+                     app:layout_constraintTop_toBottomOf="@id/card_img_driving_lisence" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_profileimg"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:backgroundTint="@color/transparent"
+                    app:cardCornerRadius="@dimen/_40sdp"
+                    app:layout_constraintStart_toEndOf="@id/guideline"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tx3"
+                    app:strokeColor="@color/light_grey">
+
+                    <ImageView
+                        android:id="@+id/iv_profile_img"
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_gravity="center"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/tst" />
+                </com.google.android.material.card.MaterialCardView>
 
 
                 <LinearLayout

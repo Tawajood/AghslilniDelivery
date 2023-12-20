@@ -17,6 +17,7 @@ data class RegisterParams(
     val  file_car_lisence: File?,
     val  file_driver_lis: File?,
     val file_id: File?,
+    val file_profile_img: File?,
     val password: String,
     val password_confirmation: String?
 )
