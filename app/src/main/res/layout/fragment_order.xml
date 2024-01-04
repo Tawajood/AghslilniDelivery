@@ -15,19 +15,51 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+     android:background="@color/white"       android:layout_height="match_parent"
              tools:context=".ui.fragment.order.OrderFragment">
 
-            <include
+            <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:layout_marginHorizontal="@dimen/_20sdp"     android:minHeight="@dimen/_80sdp"
                 android:id="@+id/toolbar"
-                layout="@layout/toolbar"
-                app:layout_constraintTop_toTopOf="parent" />
+
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/checkbox"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_22sdp"
+                    android:background="@drawable/selector_on_off"
+                    android:button="@null"
+         android:visibility="gone"           android:gravity="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_title"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_title"/>
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:gravity="center"
+                    android:text="@string/orders"          android:textColor="@color/grey_dark"
+                    android:textSize="@dimen/_15sdp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginBottom="@dimen/_5sdp"
-                android:background="@color/white"
+                 android:background="@color/white"
                 android:fillViewport="true"
                 android:paddingBottom="@dimen/_11sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -40,12 +72,11 @@
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/header_ll"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="@dimen/_42sdp"
-                        android:layout_marginHorizontal="@dimen/_20sdp"
+                        android:layout_marginHorizontal="@dimen/_15sdp"
                         android:layout_marginTop="@dimen/_4sdp"
                         android:layout_weight="1"
-                        android:backgroundTint="@color/white"
                         app:cardCornerRadius="@dimen/_18sdp"
                         app:cardElevation="6dp"
                         app:layout_constraintEnd_toEndOf="parent"

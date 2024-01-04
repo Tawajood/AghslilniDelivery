@@ -37,7 +37,7 @@ lateinit var useCase:FcmUseCase
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
-        sendBroadCast()
+        sendRealTimeBroadcast()
         showNotification(remoteMessage.data)
     }
 
@@ -50,8 +50,7 @@ lateinit var useCase:FcmUseCase
         //val soundUri =
            // Uri.parse("android.resource://" + applicationContext.packageName + "/" + R.raw.notification)
 
-        Log.d("isllam", "$remoteMessage")
-        val intent = Intent(applicationContext, MainActivity::class.java)
+         val intent = Intent(applicationContext, MainActivity::class.java)
         intent.action = Constants.OPEN_NOTIFICATION
 
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -118,10 +117,10 @@ lateinit var useCase:FcmUseCase
         notificationManager.createNotificationChannel(channel)
     }
 
-    private fun sendBroadCast() {
-        val intent = Intent()
-        intent.action = "com.tawajood.AdvisorOnline.Notify"
-        sendBroadcast(intent)
-    }
+    private fun sendRealTimeBroadcast( ) {
+        val intent =
+            Intent(MainActivity.MAIN_SCREEN_ACTION) //used to receive in intent filter when register the broadcast
+         sendBroadcast(intent)
 
+    }
 }

@@ -9,3 +9,4 @@ import java.io.File
 
 data class OrderInfoParam(val orderID: String = "",val type: Int? = null )
 data class NewOrderParam(val lat: String = "", val lon: String = "", )
+data class ActivationParam(val active :Int  )

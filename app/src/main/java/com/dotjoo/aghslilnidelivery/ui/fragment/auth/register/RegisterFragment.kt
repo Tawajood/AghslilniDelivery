@@ -120,7 +120,9 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
             is AuthAction.ShowFailureMsg -> action.message?.let {
                 if (it.contains("401") == true) {
                     showToast(it.substring(3, it.length))
-                } else {
+                } else if (it.contains("aghsilini.com") == true) {
+                    showToast( resources.getString(R.string.connection_error))
+                }else {
                     showToast(action.message)
                 }
                 showProgress(false)

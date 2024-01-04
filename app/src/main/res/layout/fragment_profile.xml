@@ -10,7 +10,7 @@
     <com.dotjoo.aghslilnidelivery.base.OnlyVerticalSwipeRefreshLayout
         android:id="@+id/swiperefresh_home"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"    >
+        android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -37,8 +37,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_42sdp"
                 android:layout_marginHorizontal="@dimen/_23sdp"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:background="@drawable/bg_light_blue"
-                android:layout_marginTop="@dimen/_10sdp"  app:layout_constraintBottom_toBottomOf="@id/lyt_header_blue"
+                app:layout_constraintBottom_toBottomOf="@id/lyt_header_blue"
                 app:layout_constraintEnd_toEndOf="@id/et_search"
                 app:layout_constraintStart_toStartOf="@id/et_search"
                 app:layout_constraintTop_toTopOf="@id/lyt_header_blue">
@@ -50,18 +51,19 @@
                     android:layout_height="@dimen/_30sdp"
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    />
+                    android:layout_marginStart="@dimen/_10sdp" />
 
 
                 <TextView
-                    android:id="@+id/tv_name_"
+                    android:id="@+id/tv_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
+                    android:layout_marginHorizontal="@dimen/_4sdp"
                     android:layout_marginVertical="@dimen/_3sdp"
                     android:layout_toEndOf="@id/iv_profile"
-                    android:textColor="@color/grey_dark"
+                    android:layout_toStartOf="@id/card_edit"
+                     android:textColor="@color/grey_dark"
                     android:textSize="@dimen/_13sdp"
                     android:textStyle="bold" />
 
@@ -81,7 +83,7 @@
                     <ImageView
                         android:layout_width="@dimen/_30sdp"
                         android:layout_height="@dimen/_30sdp"
-                        android:layout_alignParentEnd="true"
+              android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:layout_gravity="center"
                         android:padding="@dimen/_7sdp"
@@ -89,21 +91,25 @@
                 </androidx.cardview.widget.CardView>
 
             </RelativeLayout>
+
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginBottom="@dimen/_5sdp"
                 android:background="@color/white"
                 android:fillViewport="true"
-                app:layout_constraintTop_toBottomOf="@id/lyt_header_blue"
+                android:paddingBottom="@dimen/_11sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:paddingBottom="@dimen/_11sdp">
+                app:layout_constraintTop_toBottomOf="@id/lyt_header_blue">
+
                 <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/lyt_data"    android:layout_width="match_parent"
-               android:visibility="gone"     android:layout_height="match_parent">
+                    android:id="@+id/lyt_data"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
 
                     <TextView
-                        android:id="@+id/tv_name"
+                        android:id="@+id/tv_name_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/_15sdp"
@@ -122,15 +128,15 @@
                         android:layout_marginHorizontal="@dimen/_15sdp"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:background="@drawable/bg_light_blue"
-                        android:hint="@string/name"
                         android:enabled="false"
+                        android:hint="@string/name"
                         android:minHeight="@dimen/_40sdp"
                         android:paddingHorizontal="@dimen/_12sdp"
                         android:textColor="@color/grey_dark"
                         android:textSize="@dimen/_11sdp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tv_name" />
+                        app:layout_constraintTop_toBottomOf="@id/tv_name_title" />
 
                     <TextView
                         android:id="@+id/tv_phone"
@@ -152,15 +158,16 @@
                         android:layout_marginHorizontal="@dimen/_15sdp"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:background="@drawable/bg_light_blue"
+                        android:enabled="false"
                         android:hint="@string/phone_number"
                         android:minHeight="@dimen/_40sdp"
                         android:paddingHorizontal="@dimen/_12sdp"
                         android:textColor="@color/grey_dark"
                         android:textSize="@dimen/_11sdp"
                         android:textStyle="bold"
-                        android:enabled="false"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_phone" />
+
                     <com.hbb20.CountryCodePicker
                         android:id="@+id/ccp"
                         android:layout_width="wrap_content"
@@ -169,9 +176,9 @@
                         app:ccpDialog_cornerRadius="@dimen/_12sdp"
                         app:ccp_arrowColor="@color/black"
                         app:ccp_autoDetectCountry="true"
+                        app:ccp_clickable="false"
                         app:ccp_contentColor="@color/black"
                         app:ccp_defaultNameCode="sa"
-                        app:ccp_clickable="false"
                         app:ccp_excludedCountries="il"
                         app:ccp_rememberLastSelection="true"
                         app:ccp_showNameCode="false"
@@ -300,4 +307,5 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.core.widget.NestedScrollView>
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.dotjoo.aghslilnidelivery.base.OnlyVerticalSwipeRefreshLayout></layout>
+    </com.dotjoo.aghslilnidelivery.base.OnlyVerticalSwipeRefreshLayout>
+</layout>

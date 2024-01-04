@@ -5,6 +5,7 @@ import com.dotjoo.aghslilnidelivery.base.DevResponse
 import com.dotjoo.aghslilnidelivery.base.ErrorResponse
 import com.dotjoo.aghslilnidelivery.base.NetworkResponse
   import com.dotjoo.aghslilnidelivery.data.Repository
+ import com.dotjoo.aghslilnidelivery.data.param.ActivationParam
  import com.dotjoo.aghslilnidelivery.data.param.NewOrderParam
  import com.dotjoo.aghslilnidelivery.data.param.OrderInfoParam
  import dagger.hilt.android.scopes.ViewModelScoped
@@ -39,6 +40,11 @@ companion object OrderTypes{
             else  if (params == PREV) {
                 flow {
                     emit(repository.getPrevOrder())
+                } as Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>>
+            }
+           else  if (params is ActivationParam) {
+                flow {
+                    emit(repository.activeAccount(params))
                 } as Flow<NetworkResponse<DevResponse<Any>, ErrorResponse>>
             }
             else {

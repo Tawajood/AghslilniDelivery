@@ -50,6 +50,8 @@ class NotifactionFragment  : BaseFragment<FragmentNotifactionBinding>() {
                 if (it.contains("401") == true) {
                     findNavController().navigate(R.id.loginFirstBotomSheetFragment)
 
+                }else if (it.contains("aghsilini.com") == true) {
+                    showToast( resources.getString(R.string.connection_error))
                 } else {
                     showToast(action.message)
                     showProgress(false)

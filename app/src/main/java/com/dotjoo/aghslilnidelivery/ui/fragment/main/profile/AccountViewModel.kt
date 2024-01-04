@@ -28,10 +28,6 @@ class AccountViewModel
     val useCase: AccountUseCase
 ) : BaseViewModel<AccountAction>(app) {
 
-    var urgent: Boolean = false
-    var itemsInService: ItemsInService? = null
-    var currentService: ServiceInLaundry? = null
-
 
    fun getProfileData() {
         if (app.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) } == true) {

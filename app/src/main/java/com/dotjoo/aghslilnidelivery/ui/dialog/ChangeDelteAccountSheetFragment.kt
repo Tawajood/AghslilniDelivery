@@ -15,6 +15,7 @@ import com.dotjoo.aghslilnidelivery.databinding.DialogDeleteAccPassSheetBinding
 import com.dotjoo.aghslilnidelivery.ui.fragment.main.profile.AccountAction
 import com.dotjoo.aghslilnidelivery.ui.fragment.main.profile.AccountViewModel
 import com.dotjoo.aghslilnidelivery.util.ToastUtils
+import com.dotjoo.aghslilnidelivery.util.ToastUtils.Companion.showToast
 import com.dotjoo.aghslilnidelivery.util.ext.hideKeyboard
 import com.dotjoo.aghslilnidelivery.util.observe
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -68,14 +69,16 @@ class ChangeDelteAccountSheetFragment(var onClick: OnClickLoginFirst) :
             is AccountAction.ShowFailureMsg -> action.message?.let {
                 if (it.contains("401") == true) {
                     findNavController().navigate(R.id.loginFirstBotomSheetFragment)
-                } else {
-                    ToastUtils.showToast(requireContext(), action.message)
+                } else if (it.contains("aghsilini.com") == true) {
+                    showToast(requireContext(),resources.getString(R.string.connection_error))
+                }else {
+                     showToast(requireContext(), action.message)
                     showProgress(false)
                 }
             }
 
             is AccountAction.AccountDeleted -> {
-                ToastUtils.showToast(requireContext(), action.msg)
+                showToast(requireContext(), action.msg)
                 dismiss()
             }
 

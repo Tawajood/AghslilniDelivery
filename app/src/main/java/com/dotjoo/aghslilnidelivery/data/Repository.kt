@@ -1,5 +1,6 @@
 package com.dotjoo.aghslilnidelivery.data
 
+import com.dotjoo.aghslilnidelivery.data.param.ActivationParam
 import com.dotjoo.aghslilnidelivery.data.param.ChangPasswordParam
 import com.dotjoo.aghslilnidelivery.data.param.CheckOtpWithPhoneParam
 import com.dotjoo.aghslilnidelivery.data.param.CheckPhoneParam
@@ -31,6 +32,8 @@ class Repository @Inject constructor(
 
   suspend fun updateFcnToken(param: FcmParam) =
          api.updateFcnToken(param.token)
+  suspend fun activeAccount(param: ActivationParam) =
+         api.activeAccount(param.active)
 
     suspend fun changePassword(param: ChangPasswordParam) =
         api.changePassword(param.pass, param.new_pass, param.new_pass_confirm)

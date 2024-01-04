@@ -59,6 +59,8 @@ class MoreFragment : BaseFragment<FragmentMoreBinding>() {
             is AccountAction.ShowFailureMsg -> action.message?.let {
                 if (it.contains("401")) {
                     findNavController().navigate(R.id.loginFirstBotomSheetFragment)
+                }else if (it.contains("aghsilini.com") == true) {
+                    showToast( resources.getString(R.string.connection_error))
                 } else {
                     showToast(action.message)
                     showProgress(false)
@@ -67,6 +69,7 @@ class MoreFragment : BaseFragment<FragmentMoreBinding>() {
 
             is AccountAction.ShowProfile -> {
                 action.data.driver.let {
+                PrefsHelper.saveUserData(it)
                     val df = DecimalFormat("#.##")
                     df.roundingMode = RoundingMode.CEILING
                     binding.tvTotalValue.text =
@@ -122,15 +125,13 @@ class MoreFragment : BaseFragment<FragmentMoreBinding>() {
         binding.tvNotifaction.setOnClickListener {
             findNavController().navigate(R.id.notifactionFragment)
         }
-        binding.tvIt.setOnClickListener {
+     /*   binding.tvIt.setOnClickListener {
             findNavController().navigate(R.id.itFragment)
-        }
+        }*/
         binding.tvWithdraw.setOnClickListener {
             BalanceWithdrawSheetFragment.newInstance(object : OnClickLoginFirst {
                 override fun onClick(choice: String) {}
             }).show(childFragmentManager, BalanceWithdrawSheetFragment::class.java.canonicalName)
-
-
         }
 
         binding.tvLogout.setOnClickListener {

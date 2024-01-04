@@ -143,4 +143,5 @@
     <string name="request_has_been_sent">سوف يتم تفعيل حسابك بعد مراجعة البيانات من قبل التطبيق</string>
     <string name="additional_cost">التكلفه الاضافية</string>
     <string name="wrongotp">Wrong OTP</string>
+    <string name="connection_error">Connection Error</string>
 </resources>

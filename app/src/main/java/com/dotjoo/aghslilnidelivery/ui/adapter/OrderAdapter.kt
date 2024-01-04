@@ -41,7 +41,8 @@ class OrderAdapter(
 
         holder.binding.tvId.setText("#${currentItem.id}")
         holder.binding.tvDate.setText("#${currentItem.created_at}")
-        holder.binding.tvItems.setText("${currentItem.items_count}"+context.resources.getString(R.string.items))
+        holder.binding.tvLaundryName.setText(currentItem.laundry)
+   //     holder.binding.tvMoney.setText(currentItem.)
         holder.binding.tvUrgent.isVisible=(currentItem.argent==1)
         holder.binding.root.setOnClickListener {
             listener.onItemsClickLisener(currentItem)

@@ -20,4 +20,5 @@ data class Laundry(
     @SerializedName("id"      ) var id     : String? = null,
     @SerializedName("lat"          ) var lat         : String? = null,
     @SerializedName("lon"          ) var lon         : String? = null,
+    @SerializedName("activation"          ) var activation         : Boolean? = null,
  ) : Parcelable

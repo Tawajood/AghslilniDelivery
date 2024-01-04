@@ -142,4 +142,5 @@
     <string name="additional_cost">Additional Cost</string>
     <string name="profiile_img">Profile image</string>
     <string name="wrongotp">Wrong OTP</string>
+    <string name="connection_error">Connection Error</string>
 </resources>

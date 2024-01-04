@@ -87,6 +87,11 @@ interface ApiInterface {
     @Field("device_token") device_token: String
     ): NetworkResponse<DevResponse<Any>, ErrorResponse>
 
+    @POST("driver/active/account")
+    @FormUrlEncoded
+    suspend fun activeAccount(
+        @Field("active") active: Int
+    ): NetworkResponse<DevResponse<Any>, ErrorResponse>
 
     @POST("driver/update/profile")
     @Multipart

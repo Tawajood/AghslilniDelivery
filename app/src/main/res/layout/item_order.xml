@@ -9,26 +9,30 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_11sdp"     android:backgroundTint="@color/white"    android:layoutDirection="rtl"
+        android:layout_marginBottom="@dimen/_11sdp"
+        android:backgroundTint="@color/white"
+        android:layoutDirection="rtl"
         app:cardCornerRadius="@dimen/_8sdp"
         app:strokeColor="@color/light_grey"
         app:strokeWidth="@dimen/_1sdp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:backgroundTint="@color/white"     android:layout_height="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/white"
             android:padding="@dimen/_4sdp">
 
 
             <TextView
-                android:id="@+id/tv_status"
+                android:id="@+id/tv_laundry_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_8sdp"
                 android:layout_marginTop="@dimen/_8sdp"
-                android:text="@string/new_order"
-                android:textColor="@color/orange"
-                android:textSize="@dimen/_12sdp"
+                android:textColor="@color/grey_dark"
+                android:textSize="@dimen/_16sdp"
+                android:text="mo laundry "
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -63,39 +67,56 @@
                 android:layout_marginHorizontal="@dimen/_12sdp"
                 android:layout_marginVertical="@dimen/_10sdp"
                 android:background="@color/light_grey"
-                app:layout_constraintTop_toBottomOf="@id/tv_status"
+                app:layout_constraintTop_toBottomOf="@id/tv_laundry_name"
 
                 />
 
 
             <TextView
-                android:id="@+id/tv_items"
+                android:id="@+id/tv_status"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_11sdp"
-                android:gravity="center_vertical"
+                 android:gravity="center_vertical|start"
                 android:minHeight="@dimen/_35sdp"
-                 android:textColor="@color/grey_dark"
-                android:textSize="@dimen/_16sdp"
+                android:textAlignment="viewStart"
+                android:text="@string/new_order"
+                android:textColor="@color/orange"
+                android:textSize="@dimen/_12sdp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/tv_urgent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_money"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/v1" />
+                app:layout_constraintTop_toTopOf="@id/tv_money"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_money"/>
+
+            <TextView
+                android:id="@+id/tv_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_11sdp"
+        android:text="15 sar"        android:gravity="center_vertical"
+                android:minHeight="@dimen/_35sdp"
+                android:textColor="@color/grey_dark"
+                android:textSize="@dimen/_13sdp"
+                 app:layout_constraintEnd_toEndOf="parent"
+                 app:layout_constraintTop_toBottomOf="@id/v1" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/tv_urgent"
                 android:layout_width="wrap_content"
-                android:minHeight="@dimen/_30sdp"
-                android:layout_height="wrap_content"    android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/light_grey"
                 android:minWidth="@dimen/_90sdp"
+                android:minHeight="@dimen/_30sdp"
+                android:visibility="gone"
                 app:cardCornerRadius="@dimen/_14sdp"
                 app:cardElevation="0dp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_items"
+                app:layout_constraintBottom_toBottomOf="@id/tv_status"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_items"
+                app:layout_constraintTop_toTopOf="@id/tv_status"
                 app:strokeColor="@color/light_grey">
 
                 <TextView

@@ -14,6 +14,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.dotjoo.aghslilnidelivery.R
 import com.dotjoo.aghslilnidelivery.base.BaseFragment
+import com.dotjoo.aghslilnidelivery.data.PrefsHelper
 import com.dotjoo.aghslilnidelivery.data.param.UpdateProfileParam
 import com.dotjoo.aghslilnidelivery.data.response.Profile
 import com.dotjoo.aghslilnidelivery.databinding.FragmentEditProfileBinding
@@ -56,7 +57,8 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>() {
             findNavController().popBackStack()
         }
         binding.btnSignup.setOnClickListener {
-
+            if( binding.etPhone.text.toString() == PrefsHelper.getUserData()?.phone) updatPhoneFlag=0
+            else updatPhoneFlag=1
             mViewModel.updateProfile(
                 UpdateProfileParam(
                     binding.etName.text.toString(),
@@ -81,6 +83,8 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>() {
             is AccountAction.ShowFailureMsg -> action.message?.let {
                 if (it.contains("401") == true) {
                     findNavController().navigate(R.id.loginFirstBotomSheetFragment)
+                }else if (it.contains("aghsilini.com") == true) {
+                    showToast( resources.getString(R.string.connection_error))
                 } else {
                     showToast(action.message)
                     showProgress(false)
@@ -88,6 +92,7 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>() {
             }
 
             is AccountAction.ShowProfile -> {
+                action.data.driver.let { PrefsHelper.saveUserData(it) }
                 action.data.driver.let { setupProfile(it) }
             }
 

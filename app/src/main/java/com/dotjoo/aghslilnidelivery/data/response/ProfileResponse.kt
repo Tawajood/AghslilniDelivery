@@ -17,5 +17,6 @@ data class Profile(
     @SerializedName("img") val img: String,
     @SerializedName("balance") val balance: Double,
     @SerializedName("total") val total: Double,
+    @SerializedName("activation"          ) var activation         : Boolean? = null,
 ): Parcelable
 

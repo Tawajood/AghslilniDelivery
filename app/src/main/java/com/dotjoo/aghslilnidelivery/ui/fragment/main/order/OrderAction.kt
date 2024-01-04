@@ -2,7 +2,9 @@ package com.dotjoo.aghslilnidelivery.ui.fragment.main.home
 
  import com.dotjoo.aghslilnidelivery.base.Action
  import com.dotjoo.aghslilnidelivery.data.response.AlOrdersResponse
+ import com.dotjoo.aghslilnidelivery.data.response.LoginResponse
  import com.dotjoo.aghslilnidelivery.data.response.OrderInfoResponse
+ import com.dotjoo.aghslilnidelivery.data.response.ProfileResponse
 
 sealed class OrderAction : Action {
 
@@ -14,6 +16,8 @@ sealed class OrderAction : Action {
  data class  PrevOrders(val data : AlOrdersResponse): OrderAction ()
  data class  CurrentOrders(val data : AlOrdersResponse): OrderAction ()
  data class  OrderInfo(val data : OrderInfoResponse): OrderAction ()
+ data class  ShowProfile(val data : ProfileResponse): OrderAction ()
+ data class  ShowActivation(val msg : String): OrderAction ()
 
     data class AcceptOrder(val msg: String) : OrderAction()
     data class RejectOrder(val msg: String) : OrderAction()

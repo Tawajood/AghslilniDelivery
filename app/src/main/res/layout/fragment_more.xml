@@ -438,6 +438,7 @@
                             android:textSize="@dimen/_14sdp"
 
                             app:layout_constraintTop_toBottomOf="@id/v8" />
+<!--
 
                         <View
                             android:id="@+id/v9"
@@ -461,6 +462,7 @@
                             android:textSize="@dimen/_14sdp"
 
                             app:layout_constraintTop_toBottomOf="@id/v9" />
+-->
 
 
                         <TextView
@@ -476,7 +478,7 @@
 
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tv_it" />
+                            app:layout_constraintTop_toBottomOf="@id/tv_contactus" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.core.widget.NestedScrollView>
             </androidx.constraintlayout.widget.ConstraintLayout>
